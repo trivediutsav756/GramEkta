@@ -131,7 +131,14 @@ const HeroSection = () => {
           {/* CTA Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-4">
             <button
-              onClick={() => navigate("/donations")}
+              onClick={() => {
+                const section = document.getElementById('recent-projects');
+                if (section) {
+                  section.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  navigate("/donations");
+                }
+              }}
               className="flex items-center gap-2 bg-[#1a7a5e] hover:bg-[#155f49] text-white font-semibold text-base px-8 py-4 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
             >
               Discover Now

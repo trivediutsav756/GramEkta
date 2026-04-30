@@ -9,7 +9,7 @@ const cards = [
     image:
       "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=900&q=80&fit=crop",
     accentSide: "right", // gold triangle on right
-    path: "/volunteer/become",
+    path: "/contact",
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const cards = [
     image:
       "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=900&q=80&fit=crop",
     accentSide: "right",
-    path: "/volunteer/join",
+    path: "/contact",
   },
 ];
 

@@ -26,7 +26,7 @@ const projects = [
 
 export default function RecentProjects() {
   return (
-    <section className="relative overflow-hidden bg-[#f8f6f1] py-8 px-4 sm:px-6">
+    <section id="recent-projects" className="relative overflow-hidden bg-[#f8f6f1] py-8 px-4 sm:px-6">
       {/* paper texture feel – reduced intensity */}
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[radial-gradient(circle_at_20%_20%,rgba(0,0,0,0.04)_0,transparent_22%),radial-gradient(circle_at_80%_30%,rgba(0,0,0,0.03)_0,transparent_18%),radial-gradient(circle_at_50%_80%,rgba(0,0,0,0.02)_0,transparent_20%)]" />
 

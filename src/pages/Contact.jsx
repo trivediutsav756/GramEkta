@@ -8,17 +8,50 @@ const Contact = () => {
     subject: '',
     message: ''
   });
+  
+  const [loading, setLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Simulate form submission
-    console.log('Form Submitted:', formData);
-    alert('Thank you for contacting us. We will get back to you soon!');
-    setFormData({ name: '', email: '', mobile: '', subject: '', message: '' });
+    setLoading(true);
+    setStatusMessage(null);
+
+    try {
+      const response = await fetch('https://gramekta.pythonanywhere.com/contacts/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          mobile: formData.mobile,
+          subject: formData.subject,
+          message: formData.message
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      setStatusMessage({ type: 'success', text: 'Thank you for contacting us! Your message has been successfully sent.' });
+      setFormData({ name: '', email: '', mobile: '', subject: '', message: '' });
+      
+      // Clear success message after 5 seconds
+      setTimeout(() => setStatusMessage(null), 5000);
+      
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setStatusMessage({ type: 'error', text: 'Failed to send message. Please try again later.' });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -171,16 +204,38 @@ const Contact = () => {
                 ></textarea>
               </div>
 
+              {/* Status Message */}
+              {statusMessage && (
+                <div className={`p-4 rounded-lg flex items-center gap-3 ${statusMessage.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
+                  {statusMessage.type === 'success' ? (
+                    <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
+                  ) : (
+                    <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd"></path></svg>
+                  )}
+                  <span className="font-medium text-sm">{statusMessage.text}</span>
+                </div>
+              )}
+
               {/* Submit Button */}
               <div className="pt-2">
                 <button 
                   type="submit" 
-                  className="w-full sm:w-auto px-10 py-4 bg-[#f5b000] text-white font-bold text-lg rounded-xl hover:bg-[#e0a100] transition-all duration-300 shadow-[0_4px_14px_0_rgba(245,176,0,0.39)] hover:shadow-[0_6px_20px_rgba(245,176,0,0.23)] transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                  disabled={loading}
+                  className={`w-full sm:w-auto px-10 py-4 bg-[#f5b000] text-white font-bold text-lg rounded-xl transition-all duration-300 shadow-[0_4px_14px_0_rgba(245,176,0,0.39)] hover:shadow-[0_6px_20px_rgba(245,176,0,0.23)] flex items-center justify-center gap-3 ${loading ? 'opacity-70 cursor-not-allowed' : 'transform hover:-translate-y-1'}`}
                 >
-                  <span>Send Message</span>
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                  </svg>
+                  {loading ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Send Message</span>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                      </svg>
+                    </>
+                  )}
                 </button>
               </div>
             </form>

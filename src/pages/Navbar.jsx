@@ -593,7 +593,7 @@ const Navbar = () => {
             className="bg-transparent border-none cursor-pointer p-0 flex-shrink-0 flex items-center"
             aria-label="Go to homepage"
           >
-            <img src={logo} alt="Logo" className="h-12 w-auto object-contain" />
+            <img src={logo} alt="Logo" className="h-16 md:h-20 w-auto object-contain" />
           </button>
 
           {/* Contact Info – hidden on < lg */}

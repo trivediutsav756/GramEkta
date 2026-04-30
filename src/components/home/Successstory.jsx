@@ -139,6 +139,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import certImage from "../../assets/image.png";
+import certImage2 from "../../assets/image copy.png";
 
 const SuccessStory = () => {
   const navigate = useNavigate();
@@ -157,7 +158,7 @@ const SuccessStory = () => {
   }, [selectedImage]);
 
   return (
-    <section className="w-full bg-white py-12 sm:py-16 lg:py-20 px-4 overflow-hidden relative">
+    <section className="w-full bg-white pt-12 sm:pt-16 lg:pt-20 pb-0 -mb-6 lg:-mb-12 px-4 overflow-hidden relative">
       <div className="max-w-6xl xl:max-w-7xl mx-auto">
         
         {/* ── NEW: CERTIFICATES GALLERY ── */}
@@ -180,17 +181,17 @@ const SuccessStory = () => {
         </div>
 
         {/* Certificates Grid */}
-        <div className="flex justify-center w-full max-w-lg mx-auto">
-          {[certImage].map((img, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10 max-w-5xl mx-auto w-full">
+          {[certImage, certImage2].map((img, index) => (
             <div
               key={index}
               onClick={() => setSelectedImage(img)}
-              className="w-full group relative cursor-pointer bg-gray-50 border border-gray-200 rounded-3xl p-4 sm:p-6 shadow-[0_4px_20px_rgb(0,0,0,0.05)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 transform hover:-translate-y-2 flex items-center justify-center h-auto min-h-[300px]"
+              className="w-full group relative cursor-pointer bg-gray-50 border border-gray-200 rounded-3xl p-4 sm:p-6 shadow-[0_4px_20px_rgb(0,0,0,0.05)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 transform hover:-translate-y-2 flex items-center justify-center h-auto min-h-[250px]"
             >
               <img
                 src={img}
                 alt={`Certificate ${index + 1}`}
-                className="w-full h-auto max-h-[500px] object-contain rounded-xl"
+                className="w-full h-auto max-h-[380px] object-contain rounded-xl"
               />
               
               {/* Hover Overlay */}
