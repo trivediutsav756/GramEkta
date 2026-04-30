@@ -632,7 +632,7 @@ const Navbar = () => {
       </div>
 
       {/* MAIN NAV */}
-      <div className="bg-[#f3f3f3] px-5 pb-3">
+      <div className="bg-[#f3f3f3] px-5 pb-0">
         <nav
           ref={dropdownRef}
           className="max-w-6xl xl:max-w-7xl 2xl:max-w-[1400px] mx-auto bg-[#17745f] rounded-full relative"
