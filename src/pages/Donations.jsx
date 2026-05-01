@@ -1,11 +1,305 @@
-import React from 'react'
+import React, { useState } from 'react';
+
+const PRESET_AMOUNTS = [500, 1000, 2500, 5000, 10000];
 
 const Donations = () => {
-  return (
-    <div>
-      Donations
-    </div>
-  )
-}
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    mobile: '',
+    donation_amount: '',
+  });
+  const [loading, setLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState(null);
 
-export default Donations
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handlePreset = (amount) => {
+    setFormData({ ...formData, donation_amount: String(amount) });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatusMessage(null);
+
+    try {
+      const response = await fetch('https://gramekta.pythonanywhere.com/donations/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          mobile: formData.mobile,
+          donation_amount: formData.donation_amount,
+        }),
+      });
+
+      if (!response.ok) throw new Error('Failed');
+
+      setStatusMessage({ type: 'success', text: 'Thank you for your generous donation! Your contribution will make a real difference.' });
+      setFormData({ name: '', email: '', mobile: '', donation_amount: '' });
+      setTimeout(() => setStatusMessage(null), 7000);
+    } catch {
+      setStatusMessage({ type: 'error', text: 'Something went wrong. Please try again.' });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="bg-[#f9fafb] min-h-[calc(100vh-200px)] font-sans">
+
+      {/* ── HERO BANNER ── */}
+      <div className="relative w-full h-[260px] sm:h-[320px] md:h-[380px] bg-[#17745f] overflow-hidden flex items-center justify-center text-center px-4">
+        {/* Decorative blobs */}
+        <div className="absolute -top-16 -left-16 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
+        <div className="absolute -bottom-10 -right-10 w-80 h-80 bg-[#f5b000]/10 rounded-full blur-3xl" />
+        {/* Doodle lines */}
+        <svg className="absolute left-0 bottom-0 w-48 opacity-10" viewBox="0 0 200 120" fill="none">
+          <path d="M0 80 C50 40, 100 100, 150 60 C180 40, 200 60, 200 80" stroke="white" strokeWidth="2" />
+          <path d="M0 100 C60 60, 120 110, 200 70" stroke="white" strokeWidth="2" />
+        </svg>
+        <svg className="absolute right-0 top-0 w-48 opacity-10" viewBox="0 0 200 120" fill="none">
+          <circle cx="160" cy="40" r="50" stroke="white" strokeWidth="2" />
+          <circle cx="180" cy="20" r="25" stroke="#f5b000" strokeWidth="2" />
+        </svg>
+
+        <div className="relative z-10">
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <span className="text-[#f5b000] font-semibold italic text-lg" style={{ fontFamily: "'Georgia', serif" }}>
+              Make a Difference
+            </span>
+            <span className="h-px w-12 bg-[#f5b000]" />
+          </div>
+          <h1 className="text-white font-extrabold text-3xl sm:text-4xl md:text-5xl leading-tight mb-3">
+            Donate &amp; Change Lives
+          </h1>
+          <p className="text-gray-200 max-w-xl mx-auto text-sm sm:text-base">
+            Your generosity empowers communities and brings hope to those in need. Every rupee counts.
+          </p>
+        </div>
+      </div>
+
+      {/* ── STATS BAR ── */}
+      <div className="bg-white border-b border-gray-100 shadow-sm">
+        <div className="max-w-6xl mx-auto px-4 py-5 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+          {[
+            { label: 'Lives Impacted', value: '50,000+' },
+            { label: 'Active Donors', value: '12,000+' },
+            { label: 'Projects Funded', value: '340+' },
+            { label: 'Villages Reached', value: '180+' },
+          ].map((stat) => (
+            <div key={stat.label}>
+              <p className="text-2xl sm:text-3xl font-extrabold text-[#17745f]">{stat.value}</p>
+              <p className="text-xs sm:text-sm text-gray-500 mt-0.5">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── MAIN CONTENT ── */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="flex flex-col lg:flex-row gap-8 xl:gap-12">
+
+          {/* ── LEFT: Info Panel ── */}
+          <div className="lg:w-[40%] flex flex-col gap-6">
+            {/* Why Donate */}
+            <div className="bg-[#17745f] text-white rounded-2xl p-7 sm:p-9 relative overflow-hidden">
+              <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-white/5 rounded-full blur-2xl" />
+              <div className="absolute top-6 right-6 w-16 h-16 bg-[#f5b000]/20 rounded-full blur-xl" />
+              <h3 className="text-2xl font-bold text-[#f5b000] mb-3 relative z-10">Why Donate?</h3>
+              <p className="text-gray-100 text-sm leading-relaxed mb-7 relative z-10">
+                Your donation directly funds clean water, education, farmer empowerment, and women's skill programs for rural India.
+              </p>
+              <div className="space-y-5 relative z-10">
+                {[
+                  { icon: '💧', title: 'Clean Water', desc: 'Safe drinking water for hundreds of families' },
+                  { icon: '📚', title: 'Education', desc: 'Scholarships and skill training for youth' },
+                  { icon: '🌱', title: 'Livelihoods', desc: 'Farmer and women empowerment programs' },
+                  { icon: '🏥', title: 'Healthcare', desc: 'Medical camps in underserved villages' },
+                ].map((item) => (
+                  <div key={item.title} className="flex items-start gap-3">
+                    <span className="text-2xl flex-shrink-0">{item.icon}</span>
+                    <div>
+                      <p className="font-semibold text-white">{item.title}</p>
+                      <p className="text-gray-300 text-sm">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Trust badges */}
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-[0_4px_20px_rgb(0,0,0,0.04)] p-6">
+              <h4 className="font-bold text-gray-800 mb-4">You Can Trust Us</h4>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { icon: '🔒', label: 'Secure Payments' },
+                  { icon: '📜', label: 'Tax Benefits' },
+                  { icon: '✅', label: 'Govt. Certified' },
+                  { icon: '📊', label: 'Full Transparency' },
+                ].map((b) => (
+                  <div key={b.label} className="flex items-center gap-2 bg-gray-50 rounded-xl px-3 py-2.5">
+                    <span className="text-lg">{b.icon}</span>
+                    <span className="text-xs font-semibold text-gray-700">{b.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* ── RIGHT: Donation Form ── */}
+          <div className="lg:w-[60%]">
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.06)] p-7 sm:p-10">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#111827] mb-1">Make Your Donation</h2>
+              <p className="text-gray-500 text-sm mb-8">Fill in your details and choose an amount to donate.</p>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+
+                {/* Name & Email */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="flex flex-col">
+                    <label htmlFor="name" className="text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="John Doe"
+                      className="px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#17745f]/40 focus:border-[#17745f] transition-all duration-200 text-sm"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <label htmlFor="email" className="text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="john@example.com"
+                      className="px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#17745f]/40 focus:border-[#17745f] transition-all duration-200 text-sm"
+                    />
+                  </div>
+                </div>
+
+                {/* Mobile */}
+                <div className="flex flex-col">
+                  <label htmlFor="mobile" className="text-sm font-semibold text-gray-700 mb-2">Mobile Number</label>
+                  <input
+                    type="tel"
+                    id="mobile"
+                    name="mobile"
+                    value={formData.mobile}
+                    onChange={handleChange}
+                    required
+                    placeholder="+91 9876543210"
+                    className="px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#17745f]/40 focus:border-[#17745f] transition-all duration-200 text-sm"
+                  />
+                </div>
+
+                {/* Donation Amount */}
+                <div className="flex flex-col">
+                  <label className="text-sm font-semibold text-gray-700 mb-3">Donation Amount (₹)</label>
+                  {/* Preset buttons */}
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {PRESET_AMOUNTS.map((amt) => (
+                      <button
+                        type="button"
+                        key={amt}
+                        onClick={() => handlePreset(amt)}
+                        className={`px-4 py-2 rounded-full text-sm font-semibold border transition-all duration-200 ${
+                          formData.donation_amount === String(amt)
+                            ? 'bg-[#17745f] text-white border-[#17745f] shadow-md'
+                            : 'bg-white text-gray-700 border-gray-200 hover:border-[#17745f] hover:text-[#17745f]'
+                        }`}
+                      >
+                        ₹{amt.toLocaleString('en-IN')}
+                      </button>
+                    ))}
+                  </div>
+                  <input
+                    type="number"
+                    id="donation_amount"
+                    name="donation_amount"
+                    value={formData.donation_amount}
+                    onChange={handleChange}
+                    required
+                    min="1"
+                    placeholder="Or enter custom amount"
+                    className="px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#17745f]/40 focus:border-[#17745f] transition-all duration-200 text-sm"
+                  />
+                </div>
+
+                {/* Selected Amount Display */}
+                {formData.donation_amount && (
+                  <div className="bg-[#f0faf7] border border-[#17745f]/20 rounded-xl px-5 py-4 flex items-center justify-between">
+                    <span className="text-sm text-gray-600 font-medium">Your Donation</span>
+                    <span className="text-2xl font-extrabold text-[#17745f]">
+                      ₹{Number(formData.donation_amount).toLocaleString('en-IN')}
+                    </span>
+                  </div>
+                )}
+
+                {/* Status message */}
+                {statusMessage && (
+                  <div className={`p-4 rounded-xl flex items-start gap-3 ${
+                    statusMessage.type === 'success'
+                      ? 'bg-green-50 text-green-700 border border-green-200'
+                      : 'bg-red-50 text-red-700 border border-red-200'
+                  }`}>
+                    {statusMessage.type === 'success' ? (
+                      <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                    ) : (
+                      <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                      </svg>
+                    )}
+                    <span className="font-medium text-sm">{statusMessage.text}</span>
+                  </div>
+                )}
+
+                {/* Submit */}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className={`w-full py-4 bg-[#f5b000] text-white font-bold text-base rounded-xl transition-all duration-300 shadow-[0_4px_14px_0_rgba(245,176,0,0.4)] flex items-center justify-center gap-3 ${
+                    loading ? 'opacity-70 cursor-not-allowed' : 'hover:bg-[#e0a200] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(245,176,0,0.35)]'
+                  }`}
+                >
+                  {loading ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      <span>Processing...</span>
+                    </>
+                  ) : (
+                    <>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      </svg>
+                      <span>Donate Now</span>
+                    </>
+                  )}
+                </button>
+
+                <p className="text-center text-xs text-gray-400">
+                  🔒 Your payment information is securely encrypted. Gram Ekta Foundation is a registered NGO.
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Donations;

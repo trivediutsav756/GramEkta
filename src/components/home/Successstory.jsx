@@ -140,6 +140,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import certImage from "../../assets/image.png";
 import certImage2 from "../../assets/image copy.png";
+import certImage3 from "../../assets/image copy 2.png";
 
 const SuccessStory = () => {
   const navigate = useNavigate();
@@ -181,8 +182,8 @@ const SuccessStory = () => {
         </div>
 
         {/* Certificates Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10 max-w-5xl mx-auto w-full">
-          {[certImage, certImage2].map((img, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 max-w-6xl mx-auto w-full">
+          {[certImage, certImage2, certImage3].map((img, index) => (
             <div
               key={index}
               onClick={() => setSelectedImage(img)}

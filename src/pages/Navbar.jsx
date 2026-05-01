@@ -490,11 +490,6 @@ const Navbar = () => {
     {
       label: "Donations",
       path: "/donations",
-      dropdown: [
-        { label: "All Donations", path: "/donations" },
-        { label: "Single Donation", path: "/donations" }, // adjust when you have a single page
-        { label: "Donation Detail", path: "/donations" }, // adjust when you have detail page
-      ],
     },
     {
       label: "FAQ",
