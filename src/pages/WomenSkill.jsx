@@ -1,198 +1,214 @@
-import React from "react";
-import logo from "../assets/image-rmvbg.png";
+import React, { useEffect } from "react";
+import logo from "../assets/logo.jpeg";
+import girlImg from "../assets/girl.png";
+import { 
+  Scissors, 
+  Laptop, 
+  Briefcase, 
+  HeartPulse, 
+  Users, 
+  CircleDollarSign, 
+  ShieldCheck, 
+  Lightbulb,
+  CheckCircle2,
+  Zap,
+  Award
+} from "lucide-react";
 
 const WomenSkill = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-[#fcf2f4] font-sans">
-      {/* Header Banner */}
-      <div className="flex flex-col md:flex-row items-stretch w-full border-b-[6px] border-[#f4a6b9]">
-        {/* Left maroon section */}
-        <div className="flex-1 bg-[#851d41] text-white flex items-center px-4 sm:px-6 md:px-12 py-5 sm:py-6">
-          <div className="flex items-start sm:items-center gap-3 sm:gap-4 md:gap-6 w-full">
-            {/* Female Figure Icon */}
-            <svg
-              viewBox="0 0 64 64"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="flex-shrink-0 w-8 sm:w-10 md:w-[50px] mt-1 sm:mt-0"
-            >
-              <circle cx="32" cy="14" r="7" fill="white" />
-              <path d="M26 24 L16 48 L48 48 L38 24 Z" fill="white" />
-              <rect x="26" y="48" width="4" height="12" fill="white" />
-              <rect x="34" y="48" width="4" height="12" fill="white" />
-            </svg>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-serif tracking-wide flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4" style={{ fontFamily: "Georgia, serif" }}>
-              <span className="text-3xl sm:text-4xl md:text-5xl font-black leading-none">10</span>
-              <span className="leading-tight sm:leading-normal">Women's Skill Development Training</span>
-            </h1>
-          </div>
+    <div className="min-h-screen bg-[#f8fafc] font-sans overflow-x-hidden text-gray-800 pt-1 md:pt-4">
+      {/* Theme-Consistent Hero Banner */}
+      <section className="relative bg-[#17745f] py-16 md:py-24">
+        {/* Subtle Relatable Image Overlay */}
+        <div className="absolute inset-0 opacity-10">
+          <img 
+            src={girlImg} 
+            alt="Background"
+            className="w-full h-full object-cover mix-blend-overlay"
+          />
         </div>
         
-        {/* Right logo section */}
-        <div className="bg-white px-4 py-3 sm:px-8 sm:py-4 flex items-center justify-center flex-shrink-0 border-t-2 md:border-t-0 border-[#fcf2f4] md:border-none min-w-[full] md:min-w-[150px] lg:min-w-[200px]">
-          <img src={logo} alt="Gram Ekta Foundation" className="h-16 sm:h-20 md:h-28 object-contain" />
+        {/* Subtle Decorative Pattern */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0 100 C 20 0, 50 0, 100 100 Z" fill="white" />
+          </svg>
         </div>
-      </div>
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8 md:py-12 bg-[#fcf2f4]">
-        {/* Intro Text */}
-        <p className="text-base sm:text-lg md:text-xl text-[#6c2e42] italic mb-10 md:mb-14 font-medium max-w-5xl leading-relaxed">
-          Empowering women through targeted skill training, livelihood programmes and entrepreneurship support — building confident, self-reliant women who lead their communities.
-        </p>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+          {/* Left: Text Content */}
+          <div className="flex-1 text-center lg:text-left animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 bg-white/10 text-[#fcd34d] px-4 py-2 rounded-full mb-6 backdrop-blur-sm border border-white/10">
+              <Award size={18} />
+              <span className="text-sm font-bold uppercase tracking-wider">Our Initiative 10</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-8 font-serif">
+              Women's Skill <br />
+              <span className="text-[#fcd34d]">Development</span>
+            </h1>
+            
+            <p className="text-white/90 text-lg md:text-xl max-w-2xl leading-relaxed italic border-l-4 border-[#f5b000] pl-6 mx-auto lg:mx-0">
+              "Empowering women through targeted skill training, livelihood programmes and entrepreneurship support — building confident, self-reliant women who lead their communities."
+            </p>
+          </div>
+        </div>
 
-        {/* 2 Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10">
+        {/* Bottom Wave Divider */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-[calc(100%+1.3px)] h-[50px] md:h-[80px]">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#f8fafc"></path>
+          </svg>
+        </div>
+      </section>
+
+      {/* Main Content Sections */}
+      <main className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           
-          {/* Left Column: TRAINING PROGRAMMES */}
-          <div className="flex flex-col">
-            <div className="bg-[#851d41] text-white py-4 px-6 font-bold tracking-[0.1em] sm:tracking-[0.15em] text-sm sm:text-base shadow-sm">
-              TRAINING PROGRAMMES
+          {/* Section 1: TRAINING & SKILLS */}
+          <div className="space-y-8">
+            <div className="inline-flex items-center gap-4 bg-[#17745f]/5 px-6 py-3 rounded-full border border-[#17745f]/10">
+              <Zap className="text-[#17745f] w-6 h-6" />
+              <h2 className="text-2xl font-bold text-[#17745f] tracking-tight uppercase">Training & Skills</h2>
             </div>
-            
-            <div className="flex flex-col gap-4 mt-4">
-              {/* Card 1 */}
-              <div className="bg-white border border-[#e8a5b8] p-5 sm:p-6 flex items-start gap-4 sm:gap-6 shadow-sm">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#851d41] flex items-center justify-center flex-shrink-0">
-                  <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="6" cy="6" r="3"></circle>
-                    <circle cx="6" cy="18" r="3"></circle>
-                    <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
-                    <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
-                    <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-[#851d41] font-bold text-base sm:text-lg mb-1 sm:mb-2">Tailoring & Textile Crafts</h3>
-                  <p className="text-[#555] text-sm leading-relaxed">
-                    Stitching, embroidery, fabric printing and garment making for self-employment and small enterprise.
-                  </p>
-                </div>
-              </div>
 
-              {/* Card 2 */}
-              <div className="bg-white border border-[#e8a5b8] p-5 sm:p-6 flex items-start gap-4 sm:gap-6 shadow-sm">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#851d41] flex items-center justify-center flex-shrink-0">
-                  <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                    <line x1="8" y1="21" x2="16" y2="21"></line>
-                    <line x1="12" y1="17" x2="12" y2="21"></line>
-                  </svg>
+            <div className="grid gap-6">
+              {[
+                {
+                  title: "Tailoring & Textile Crafts",
+                  desc: "Stitching, embroidery, fabric printing and garment making for self-employment and small enterprise.",
+                  icon: <Scissors className="w-6 h-6" />,
+                },
+                {
+                  title: "Digital Literacy & Computer Skills",
+                  desc: "Basic computing, internet use, digital payments and online business skills for modern livelihoods.",
+                  icon: <Laptop className="w-6 h-6" />,
+                },
+                {
+                  title: "Entrepreneurship Development",
+                  desc: "Business planning, micro-enterprise setup, credit linkage and marketing skills for aspiring women entrepreneurs.",
+                  icon: <Briefcase className="w-6 h-6" />,
+                },
+                {
+                  title: "Health & Nutrition Education",
+                  desc: "Maternal health, child nutrition, hygiene and community health worker training for healthier families.",
+                  icon: <HeartPulse className="w-6 h-6" />,
+                }
+              ].map((item, idx) => (
+                <div 
+                  key={idx} 
+                  className="group bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="flex items-start gap-5">
+                    <div className="p-3 rounded-xl bg-[#17745f]/5 text-[#17745f] group-hover:bg-[#17745f] group-hover:text-white transition-colors duration-300">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#17745f] transition-colors">{item.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-[#851d41] font-bold text-base sm:text-lg mb-1 sm:mb-2">Digital Literacy & Computer Skills</h3>
-                  <p className="text-[#555] text-sm leading-relaxed">
-                    Basic computing, internet use, digital payments and online business skills for modern livelihoods.
-                  </p>
-                </div>
-              </div>
-
-              {/* Card 3 */}
-              <div className="bg-white border border-[#e8a5b8] p-5 sm:p-6 flex items-start gap-4 sm:gap-6 shadow-sm">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#851d41] flex items-center justify-center flex-shrink-0">
-                  <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-[#851d41] font-bold text-base sm:text-lg mb-1 sm:mb-2">Entrepreneurship Development</h3>
-                  <p className="text-[#555] text-sm leading-relaxed">
-                    Business planning, micro-enterprise setup, credit linkage and marketing skills for aspiring women entrepreneurs.
-                  </p>
-                </div>
-              </div>
-
-              {/* Card 4 */}
-              <div className="bg-white border border-[#e8a5b8] p-5 sm:p-6 flex items-start gap-4 sm:gap-6 shadow-sm">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#851d41] flex items-center justify-center flex-shrink-0">
-                  <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-[#851d41] font-bold text-base sm:text-lg mb-1 sm:mb-2">Health & Nutrition Education</h3>
-                  <p className="text-[#555] text-sm leading-relaxed">
-                    Maternal health, child nutrition, hygiene and community health worker training for healthier families.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
-          {/* Right Column: IMPACT & SUPPORT */}
-          <div className="flex flex-col">
-            <div className="bg-[#458f5a] text-white py-4 px-6 font-bold tracking-[0.1em] sm:tracking-[0.15em] text-sm sm:text-base shadow-sm">
-              IMPACT & SUPPORT
+          {/* Section 2: EMPOWERMENT & IMPACT */}
+          <div className="space-y-8">
+            <div className="inline-flex items-center gap-4 bg-[#f5b000]/5 px-6 py-3 rounded-full border border-[#f5b000]/10">
+              <CheckCircle2 className="text-[#f5b000] w-6 h-6" />
+              <h2 className="text-2xl font-bold text-[#f5b000] tracking-tight uppercase">Empowerment & Impact</h2>
             </div>
-            
-            <div className="flex flex-col gap-4 mt-4">
-              {/* Card 1 */}
-              <div className="bg-white border border-[#a5cba8] p-5 sm:p-6 flex items-start gap-4 sm:gap-6 shadow-sm">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#458f5a] flex items-center justify-center flex-shrink-0">
-                  <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-[#458f5a] font-bold text-base sm:text-lg mb-1 sm:mb-2">Self-Help Group (SHG) Formation</h3>
-                  <p className="text-[#555] text-sm leading-relaxed">
-                    Forming and nurturing women SHGs for collective savings, credit access and mutual support.
-                  </p>
-                </div>
-              </div>
 
-              {/* Card 2 */}
-              <div className="bg-white border border-[#a5cba8] p-5 sm:p-6 flex items-start gap-4 sm:gap-6 shadow-sm">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#458f5a] flex items-center justify-center flex-shrink-0">
-                  <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
+            <div className="grid gap-6">
+              {[
+                {
+                  title: "Self-Help Group (SHG) Formation",
+                  desc: "Forming and nurturing women SHGs for collective savings, credit access and mutual support.",
+                  icon: <Users className="w-6 h-6" />,
+                },
+                {
+                  title: "Livelihood & Income Generation",
+                  desc: "Creating sustainable income opportunities through product development, market linkages and cooperatives.",
+                  icon: <CircleDollarSign className="w-6 h-6" />,
+                },
+                {
+                  title: "Legal Rights & Awareness",
+                  desc: "Educating women on their legal rights, government welfare schemes and entitlements for personal empowerment.",
+                  icon: <ShieldCheck className="w-6 h-6" />,
+                },
+                {
+                  title: "Leadership & Confidence Building",
+                  desc: "Workshops and mentoring programmes to build leadership qualities and decision-making confidence.",
+                  icon: <Lightbulb className="w-6 h-6" />,
+                }
+              ].map((item, idx) => (
+                <div 
+                  key={idx} 
+                  className="group bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="flex items-start gap-5">
+                    <div className="p-3 rounded-xl bg-[#f5b000]/5 text-[#f5b000] group-hover:bg-[#f5b000] group-hover:text-white transition-colors duration-300">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#f5b000] transition-colors">{item.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-[#458f5a] font-bold text-base sm:text-lg mb-1 sm:mb-2">Livelihood & Income Generation</h3>
-                  <p className="text-[#555] text-sm leading-relaxed">
-                    Creating sustainable income opportunities through product development, market linkages and cooperatives.
-                  </p>
-                </div>
-              </div>
-
-              {/* Card 3 */}
-              <div className="bg-white border border-[#a5cba8] p-5 sm:p-6 flex items-start gap-4 sm:gap-6 shadow-sm">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#458f5a] flex items-center justify-center flex-shrink-0">
-                  <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-[#458f5a] font-bold text-base sm:text-lg mb-1 sm:mb-2">Legal Rights & Awareness</h3>
-                  <p className="text-[#555] text-sm leading-relaxed">
-                    Educating women on their legal rights, government welfare schemes and entitlements for personal empowerment.
-                  </p>
-                </div>
-              </div>
-
-              {/* Card 4 */}
-              <div className="bg-white border border-[#a5cba8] p-5 sm:p-6 flex items-start gap-4 sm:gap-6 shadow-sm">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#458f5a] flex items-center justify-center flex-shrink-0">
-                  <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-[#458f5a] font-bold text-base sm:text-lg mb-1 sm:mb-2">Leadership & Confidence Building</h3>
-                  <p className="text-[#555] text-sm leading-relaxed">
-                    Workshops and mentoring programmes to build leadership qualities and decision-making confidence.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
         </div>
-      </div>
+
+        {/* Footer Call to Action */}
+        <div className="mt-20 p-8 md:p-12 rounded-3xl bg-[#17745f] text-center text-white shadow-2xl relative overflow-hidden group">
+          {/* Subtle patterns */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl group-hover:scale-110 transition-transform duration-700" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#f5b000]/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl group-hover:scale-110 transition-transform duration-700" />
+          
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 font-serif">Support Women Empowerment</h2>
+            <p className="text-white/80 mb-8 leading-relaxed">
+              Your support can provide the tools and training needed for women to build a brighter future for themselves and their community.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button className="bg-[#f5b000] hover:bg-[#e0a100] text-white font-bold px-8 py-4 rounded-full transition-all duration-200 transform hover:-translate-y-0.5 shadow-lg">
+                Donate Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <style>{`
+        @keyframes fade-in-up {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fade-in {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        .animate-fade-in-up {
+          animation: fade-in-up 0.8s ease-out forwards;
+        }
+        .animate-fade-in {
+          animation: fade-in 1s ease-out forwards;
+        }
+      `}</style>
     </div>
   );
 };
 
 export default WomenSkill;
+

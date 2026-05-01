@@ -1,153 +1,178 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../assets/image-rmvbg.png";
+import { TreePine, Leaf, Recycle, Waves, Wind, GraduationCap } from "lucide-react";
 
 const Environment = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-[#f4f7f4] font-sans">
-      {/* Header Banner */}
-      <div className="flex flex-col md:flex-row items-stretch w-full border-b-[6px] border-[#a2d246]">
-        {/* Left dark green section */}
-        <div className="flex-1 bg-[#1e5625] text-white flex items-center px-4 sm:px-6 md:px-12 py-5 sm:py-6">
-          <div className="flex items-start sm:items-center gap-3 sm:gap-4 md:gap-6 w-full">
-            {/* Pine Tree Icon */}
-            <svg
-              viewBox="0 0 64 64"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="flex-shrink-0 w-10 sm:w-12 md:w-[60px] mt-1 sm:mt-0"
-            >
-              <path d="M32 4 L44 24 L36 24 L48 44 L36 44 L52 60 L12 60 L28 44 L16 44 L28 24 L20 24 Z" fill="white" />
-              <rect x="28" y="60" width="8" height="4" fill="white" />
-            </svg>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-serif tracking-wide flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4" style={{ fontFamily: "Georgia, serif" }}>
-              <span className="text-3xl sm:text-4xl md:text-5xl font-black leading-none">11</span>
-              <span className="leading-tight sm:leading-normal">Environmental Development</span>
+    <div className="min-h-screen bg-[#f8fafc] font-sans overflow-x-hidden text-gray-800 pt-1 md:pt-4">
+      {/* Theme-Consistent Hero Banner */}
+      <section className="relative bg-[#17745f] py-16 md:py-24">
+        {/* Subtle Decorative Pattern */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0 100 C 20 0, 50 0, 100 100 Z" fill="white" />
+          </svg>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+          {/* Left: Text Content */}
+          <div className="flex-1 text-center lg:text-left animate-fade-in-up">
+            <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-8 font-serif">
+              Environmental <br />
+              <span className="text-[#fcd34d]">Development</span>
             </h1>
+            
+            <p className="text-white/90 text-lg md:text-xl max-w-2xl leading-relaxed italic border-l-4 border-[#f5b000] pl-6 mx-auto lg:mx-0">
+              "Nurturing nature and protecting the environment — promoting afforestation, biodiversity, pollution control and eco-conscious community practices for a sustainable future."
+            </p>
+          </div>
+
+          {/* Right: Branding */}
+          <div className="flex-shrink-0 animate-fade-in w-full lg:w-auto flex justify-center">
+             <img src={logo} alt="Gram Ekta Foundation" className="h-32 md:h-48 object-contain brightness-0 invert opacity-20" />
           </div>
         </div>
+
+        {/* Bottom Wave Divider */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-[calc(100%+1.3px)] h-[50px] md:h-[80px]">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#f8fafc"></path>
+          </svg>
+        </div>
+      </section>
+
+      {/* Main Content Sections */}
+      <main className="max-w-7xl mx-auto px-6 py-16 md:py-24">
         
-        {/* Right logo section */}
-        <div className="bg-white px-4 py-3 sm:px-8 sm:py-4 flex items-center justify-center flex-shrink-0 border-t-2 md:border-t-0 border-[#f4f7f4] md:border-none min-w-[full] md:min-w-[150px] lg:min-w-[200px]">
-          <img src={logo} alt="Gram Ekta Foundation" className="h-16 sm:h-20 md:h-28 object-contain" />
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8 md:py-12 bg-[#f4f7f4]">
-        {/* Intro Text */}
-        <p className="text-base sm:text-lg md:text-xl text-[#3a6842] italic mb-10 md:mb-14 font-medium max-w-5xl leading-relaxed">
-          Nurturing nature and protecting the environment — promoting afforestation, biodiversity, pollution control and eco-conscious community practices for a sustainable future.
-        </p>
-
-        {/* 6 Cards Grid (3 columns on desktop, 2 rows) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           
-          {/* Card 1: Afforestation */}
-          <div className="bg-[#e2efdf] border-2 border-[#2d7a3a] p-5 sm:p-6 flex flex-col shadow-sm">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#2d7a3a] flex items-center justify-center flex-shrink-0 shadow-sm">
-                <svg viewBox="0 0 64 64" className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none">
-                  <path d="M32 10 L44 26 L36 26 L48 46 L36 46 L50 60 L14 60 L28 46 L16 46 L28 26 L20 26 Z" fill="currentColor" />
-                </svg>
-              </div>
-              <h3 className="text-[#2d7a3a] font-bold text-base sm:text-lg leading-tight">Afforestation & Tree Plantation</h3>
+          {/* Section 1: CONSERVATION & RESTORATION */}
+          <div className="space-y-8">
+            <div className="inline-flex items-center gap-4 bg-[#17745f]/5 px-6 py-3 rounded-full border border-[#17745f]/10">
+              <TreePine className="text-[#17745f] w-6 h-6" />
+              <h2 className="text-2xl font-bold text-[#17745f] tracking-tight uppercase">Conservation & Restoration</h2>
             </div>
-            <p className="text-[#4b5a51] text-sm leading-relaxed mt-1">
-              Organising large-scale tree plantation drives in barren lands, roadsides, schools and community spaces to increase green cover.
-            </p>
+
+            <div className="grid gap-6">
+              {[
+                {
+                  title: "Afforestation & Tree Plantation",
+                  desc: "Organising large-scale tree plantation drives in barren lands, roadsides, schools and community spaces to increase green cover.",
+                  icon: <TreePine className="w-6 h-6" />,
+                },
+                {
+                  title: "Biodiversity Conservation",
+                  desc: "Protecting local flora and fauna through awareness, habitat preservation and promotion of native plant species in communities.",
+                  icon: <Leaf className="w-6 h-6" />,
+                },
+                {
+                  title: "Watershed & Water Body Restoration",
+                  desc: "Rejuvenating ponds, lakes, rivers and watersheds through desilting, bund repair and community water conservation programs.",
+                  icon: <Waves className="w-6 h-6" />,
+                }
+              ].map((item, idx) => (
+                <div 
+                  key={idx} 
+                  className="group bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="flex items-start gap-5">
+                    <div className="p-3 rounded-xl bg-[#17745f]/5 text-[#17745f] group-hover:bg-[#17745f] group-hover:text-white transition-colors duration-300">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#17745f] transition-colors">{item.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Card 2: Biodiversity */}
-          <div className="bg-[#e8eedb] border-2 border-[#6b953d] p-5 sm:p-6 flex flex-col shadow-sm">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#6b953d] flex items-center justify-center flex-shrink-0 shadow-sm">
-                <svg viewBox="0 0 64 64" className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none">
-                  <path d="M32 50 C 15 50 10 35 10 20 C 25 20 40 30 32 50 Z" fill="currentColor" />
-                  <path d="M32 50 C 50 50 55 35 55 20 C 40 20 25 30 32 50 Z" fill="currentColor" />
-                  <path d="M32 50 V60" stroke="currentColor" strokeWidth="4" />
-                </svg>
-              </div>
-              <h3 className="text-[#6b953d] font-bold text-base sm:text-lg leading-tight">Biodiversity Conservation</h3>
+          {/* Section 2: SUSTAINABLE ACTIONS */}
+          <div className="space-y-8">
+            <div className="inline-flex items-center gap-4 bg-[#f5b000]/5 px-6 py-3 rounded-full border border-[#f5b000]/10">
+              <Recycle className="text-[#f5b000] w-6 h-6" />
+              <h2 className="text-2xl font-bold text-[#f5b000] tracking-tight uppercase">Sustainable Actions</h2>
             </div>
-            <p className="text-[#4b5a51] text-sm leading-relaxed mt-1">
-              Protecting local flora and fauna through awareness, habitat preservation and promotion of native plant species in communities.
-            </p>
-          </div>
 
-          {/* Card 3: Waste Reduction */}
-          <div className="bg-[#f6f4e1] border-2 border-[#93821a] p-5 sm:p-6 flex flex-col shadow-sm">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#93821a] flex items-center justify-center flex-shrink-0 shadow-sm">
-                <svg viewBox="0 0 64 64" className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M26 14 L32 24 L20 24 Z" fill="currentColor" />
-                  <path d="M20 24 L14 36 L26 36 Z" fill="currentColor" />
-                  <path d="M44 24 L50 36 L38 36 Z" fill="currentColor" />
-                  <path d="M38 36 L32 48 L44 48 Z" fill="currentColor" />
-                  <path d="M26 54 L32 44 L38 54 Z" fill="currentColor" />
-                </svg>
-              </div>
-              <h3 className="text-[#93821a] font-bold text-base sm:text-lg leading-tight">Waste Reduction & Recycling</h3>
+            <div className="grid gap-6">
+              {[
+                {
+                  title: "Waste Reduction & Recycling",
+                  desc: "Promoting zero-waste practices, composting, material recycling and reducing single-use plastic at the community level.",
+                  icon: <Recycle className="w-6 h-6" />,
+                },
+                {
+                  title: "Pollution Control Initiatives",
+                  desc: "Campaigns and practical programs to reduce air, water and soil pollution, including awareness drives and eco-friendly alternatives.",
+                  icon: <Wind className="w-6 h-6" />,
+                },
+                {
+                  title: "Eco-Awareness & Green Education",
+                  desc: "Running environmental literacy programmes in schools and communities to cultivate a culture of ecological responsibility.",
+                  icon: <GraduationCap className="w-6 h-6" />,
+                }
+              ].map((item, idx) => (
+                <div 
+                  key={idx} 
+                  className="group bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="flex items-start gap-5">
+                    <div className="p-3 rounded-xl bg-[#f5b000]/5 text-[#f5b000] group-hover:bg-[#f5b000] group-hover:text-white transition-colors duration-300">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#f5b000] transition-colors">{item.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-            <p className="text-[#555] text-sm leading-relaxed mt-1">
-              Promoting zero-waste practices, composting, material recycling and reducing single-use plastic at the community level.
-            </p>
-          </div>
-
-          {/* Card 4: Watershed */}
-          <div className="bg-[#dff2f3] border-2 border-[#17727b] p-5 sm:p-6 flex flex-col shadow-sm">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#17727b] flex items-center justify-center flex-shrink-0 shadow-sm">
-                <svg viewBox="0 0 64 64" className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round">
-                  <path d="M14 26 C 22 20 30 32 38 26 C 46 20 50 26 50 26" />
-                  <path d="M14 36 C 22 30 30 42 38 36 C 46 30 50 36 50 36" />
-                  <path d="M14 46 C 22 40 30 52 38 46 C 46 40 50 46 50 46" />
-                </svg>
-              </div>
-              <h3 className="text-[#17727b] font-bold text-base sm:text-lg leading-tight">Watershed & Water Body Restoration</h3>
-            </div>
-            <p className="text-[#445b5c] text-sm leading-relaxed mt-1">
-              Rejuvenating ponds, lakes, rivers and watersheds through desilting, bund repair and community water conservation programs.
-            </p>
-          </div>
-
-          {/* Card 5: Pollution Control */}
-          <div className="bg-[#fbece5] border-2 border-[#e25d19] p-5 sm:p-6 flex flex-col shadow-sm">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#e25d19] flex items-center justify-center flex-shrink-0 shadow-sm">
-                <svg viewBox="0 0 64 64" className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" strokeWidth="4">
-                  <rect x="18" y="24" width="28" height="20" rx="2" />
-                  <path d="M26 24 V16 M38 24 V16 M26 16 H38" strokeLinecap="round" />
-                  <path d="M26 44 V52 M38 44 V52" strokeLinecap="round" />
-                  <circle cx="26" cy="34" r="3" fill="currentColor" />
-                  <circle cx="38" cy="34" r="3" fill="currentColor" />
-                </svg>
-              </div>
-              <h3 className="text-[#e25d19] font-bold text-base sm:text-lg leading-tight">Pollution Control Initiatives</h3>
-            </div>
-            <p className="text-[#6c5145] text-sm leading-relaxed mt-1">
-              Campaigns and practical programs to reduce air, water and soil pollution, including awareness drives and eco-friendly alternatives.
-            </p>
-          </div>
-
-          {/* Card 6: Eco-Awareness */}
-          <div className="bg-[#efe5f3] border-2 border-[#6a2b8e] p-5 sm:p-6 flex flex-col shadow-sm">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#6a2b8e] flex items-center justify-center flex-shrink-0 shadow-sm">
-                <svg viewBox="0 0 64 64" className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none">
-                  <path d="M28 46 V30" stroke="currentColor" strokeWidth="5" strokeLinecap="round" />
-                  <path d="M28 36 C 18 36 12 28 12 18 C 22 18 28 26 28 36 Z" fill="currentColor" />
-                  <path d="M28 30 C 40 30 48 20 48 8 C 36 8 28 18 28 30 Z" fill="currentColor" />
-                </svg>
-              </div>
-              <h3 className="text-[#6a2b8e] font-bold text-base sm:text-lg leading-tight">Eco-Awareness & Green Education</h3>
-            </div>
-            <p className="text-[#554a5c] text-sm leading-relaxed mt-1">
-              Running environmental literacy programmes in schools and communities to cultivate a culture of ecological responsibility.
-            </p>
           </div>
 
         </div>
-      </div>
+
+        {/* Footer Call to Action */}
+        <div className="mt-20 p-8 md:p-12 rounded-3xl bg-[#17745f] text-center text-white shadow-2xl relative overflow-hidden group">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl group-hover:scale-110 transition-transform duration-700" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#f5b000]/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl group-hover:scale-110 transition-transform duration-700" />
+          
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 font-serif">Join Our Green Mission</h2>
+            <p className="text-white/80 mb-8 leading-relaxed">
+              Your support helps us plant more trees, restore more water bodies, and educate the next generation of environmental stewards.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button className="bg-[#f5b000] hover:bg-[#e0a100] text-white font-bold px-8 py-4 rounded-full transition-all duration-200 transform hover:-translate-y-0.5 shadow-lg">
+                Donate Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <style>{`
+        @keyframes fade-in-up {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fade-in {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        .animate-fade-in-up {
+          animation: fade-in-up 0.8s ease-out forwards;
+        }
+        .animate-fade-in {
+          animation: fade-in 1s ease-out forwards;
+        }
+      `}</style>
     </div>
   );
 };
