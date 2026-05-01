@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const PRESET_AMOUNTS = [500, 1000, 2500, 5000, 10000];
 
@@ -8,9 +8,34 @@ const Donations = () => {
     email: '',
     mobile: '',
     donation_amount: '',
+    category_id: '',
   });
+  const [categories, setCategories] = useState([]);
+  const [receiptImage, setReceiptImage] = useState(null);
+  const [receiptPreview, setReceiptPreview] = useState(null);
+  const [dragOver, setDragOver] = useState(false);
+  const fileInputRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState(null);
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch('https://gramekta.pythonanywhere.com/categories/');
+        if (response.ok) {
+          const result = await response.json();
+          // The API returns { "status": "success", "message": "...", "data": [...] }
+          if (result && Array.isArray(result.data)) {
+            setCategories(result.data);
+          } else {
+            setCategories([]);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+    fetchCategories();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,27 +45,59 @@ const Donations = () => {
     setFormData({ ...formData, donation_amount: String(amount) });
   };
 
+  const handleImageChange = (file) => {
+    if (!file) return;
+    if (!file.type.startsWith('image/')) {
+      setStatusMessage({ type: 'error', text: 'Please upload a valid image file (JPG, PNG, etc.)' });
+      return;
+    }
+    setReceiptImage(file);
+    setReceiptPreview(URL.createObjectURL(file));
+    setStatusMessage(null);
+  };
+
+  const handleFileInput = (e) => {
+    handleImageChange(e.target.files[0]);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setDragOver(false);
+    handleImageChange(e.dataTransfer.files[0]);
+  };
+
+  const removeImage = () => {
+    setReceiptImage(null);
+    setReceiptPreview(null);
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setStatusMessage(null);
 
     try {
+      const payload = new FormData();
+      payload.append('name', formData.name);
+      payload.append('email', formData.email);
+      payload.append('mobile', formData.mobile);
+      payload.append('donation_amount', formData.donation_amount);
+      payload.append('category_id', formData.category_id);
+      if (receiptImage) {
+        payload.append('image', receiptImage);
+      }
+
       const response = await fetch('https://gramekta.pythonanywhere.com/donations/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          mobile: formData.mobile,
-          donation_amount: formData.donation_amount,
-        }),
+        body: payload,
       });
 
       if (!response.ok) throw new Error('Failed');
 
       setStatusMessage({ type: 'success', text: 'Thank you for your generous donation! Your contribution will make a real difference.' });
-      setFormData({ name: '', email: '', mobile: '', donation_amount: '' });
+      setFormData({ name: '', email: '', mobile: '', donation_amount: '', category_id: '' });
+      removeImage();
       setTimeout(() => setStatusMessage(null), 7000);
     } catch {
       setStatusMessage({ type: 'error', text: 'Something went wrong. Please try again.' });
@@ -106,27 +163,32 @@ const Donations = () => {
 
           {/* ── LEFT: Info Panel ── */}
           <div className="lg:w-[40%] flex flex-col gap-6">
-            {/* Why Donate */}
+            {/* Bank Transfer Details */}
             <div className="bg-[#17745f] text-white rounded-2xl p-7 sm:p-9 relative overflow-hidden">
               <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-white/5 rounded-full blur-2xl" />
               <div className="absolute top-6 right-6 w-16 h-16 bg-[#f5b000]/20 rounded-full blur-xl" />
-              <h3 className="text-2xl font-bold text-[#f5b000] mb-3 relative z-10">Why Donate?</h3>
-              <p className="text-gray-100 text-sm leading-relaxed mb-7 relative z-10">
-                Your donation directly funds clean water, education, farmer empowerment, and women's skill programs for rural India.
+              <div className="relative z-10 flex items-center gap-3 mb-5">
+                <div className="w-10 h-10 rounded-full bg-[#f5b000]/20 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-[#f5b000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-[#f5b000]">Bank Transfer Details</h3>
+              </div>
+              <p className="text-gray-200 text-sm leading-relaxed mb-6 relative z-10">
+                You can donate directly via bank transfer. Use the details below and upload your payment receipt in the form.
               </p>
-              <div className="space-y-5 relative z-10">
+              <div className="space-y-3 relative z-10">
                 {[
-                  { icon: '💧', title: 'Clean Water', desc: 'Safe drinking water for hundreds of families' },
-                  { icon: '📚', title: 'Education', desc: 'Scholarships and skill training for youth' },
-                  { icon: '🌱', title: 'Livelihoods', desc: 'Farmer and women empowerment programs' },
-                  { icon: '🏥', title: 'Healthcare', desc: 'Medical camps in underserved villages' },
+                  { label: 'Account Name', value: 'GRAM Ekta Foundation' },
+                  { label: 'Bank Name', value: 'IDBI Bank' },
+                  { label: 'Account Number', value: '2055102000002950' },
+                  { label: 'IFSC Code', value: 'IBKL0002055' },
+                  { label: 'Branch', value: 'Paud Mulshi, Pune' },
                 ].map((item) => (
-                  <div key={item.title} className="flex items-start gap-3">
-                    <span className="text-2xl flex-shrink-0">{item.icon}</span>
-                    <div>
-                      <p className="font-semibold text-white">{item.title}</p>
-                      <p className="text-gray-300 text-sm">{item.desc}</p>
-                    </div>
+                  <div key={item.label} className="flex flex-col sm:flex-row sm:items-center gap-1 bg-white/10 rounded-xl px-4 py-3">
+                    <span className="text-[#f5b000] font-semibold text-xs uppercase tracking-wide w-36 flex-shrink-0">{item.label}</span>
+                    <span className="text-white font-medium text-sm break-all">{item.value}</span>
                   </div>
                 ))}
               </div>
@@ -204,6 +266,27 @@ const Donations = () => {
                   />
                 </div>
 
+                {/* Category Selection */}
+                <div className="flex flex-col">
+                  <label htmlFor="category_id" className="text-sm font-semibold text-gray-700 mb-2">Donate For (Category)</label>
+                  <select
+                    id="category_id"
+                    name="category_id"
+                    value={formData.category_id}
+                    onChange={handleChange}
+                    required
+                    className="px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#17745f]/40 focus:border-[#17745f] transition-all duration-200 text-sm appearance-none cursor-pointer"
+                    style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '1.25rem' }}
+                  >
+                    <option value="" disabled>Select a category</option>
+                    {categories.map((cat) => (
+                      <option key={cat.id} value={cat.id}>
+                        {cat.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
                 {/* Donation Amount */}
                 <div className="flex flex-col">
                   <label className="text-sm font-semibold text-gray-700 mb-3">Donation Amount (₹)</label>
@@ -235,6 +318,84 @@ const Donations = () => {
                     placeholder="Or enter custom amount"
                     className="px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#17745f]/40 focus:border-[#17745f] transition-all duration-200 text-sm"
                   />
+                </div>
+
+                {/* Payment Receipt Upload */}
+                <div className="flex flex-col">
+                  <label className="text-sm font-semibold text-gray-700 mb-2">
+                    Payment Receipt
+                    <span className="ml-2 text-xs font-normal text-gray-400">(Optional – upload screenshot/photo of payment)</span>
+                  </label>
+
+                  {!receiptPreview ? (
+                    <div
+                      onClick={() => fileInputRef.current?.click()}
+                      onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+                      onDragLeave={() => setDragOver(false)}
+                      onDrop={handleDrop}
+                      className={`relative flex flex-col items-center justify-center gap-3 border-2 border-dashed rounded-xl py-8 px-4 cursor-pointer transition-all duration-200 ${
+                        dragOver
+                          ? 'border-[#17745f] bg-[#f0faf7]'
+                          : 'border-gray-200 bg-gray-50 hover:border-[#17745f] hover:bg-[#f0faf7]'
+                      }`}
+                    >
+                      <div className="w-12 h-12 rounded-full bg-[#17745f]/10 flex items-center justify-center">
+                        <svg className="w-6 h-6 text-[#17745f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                          />
+                        </svg>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-sm font-semibold text-gray-700">Click to upload or drag & drop</p>
+                        <p className="text-xs text-gray-400 mt-1">JPG, PNG, WEBP — max 5MB</p>
+                      </div>
+                      <input
+                        ref={fileInputRef}
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileInput}
+                        className="hidden"
+                      />
+                    </div>
+                  ) : (
+                    <div className="relative rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+                      <img
+                        src={receiptPreview}
+                        alt="Payment Receipt Preview"
+                        className="w-full max-h-52 object-contain bg-gray-50"
+                      />
+                      <div className="absolute top-2 right-2 flex gap-2">
+                        <button
+                          type="button"
+                          onClick={() => fileInputRef.current?.click()}
+                          className="bg-white/90 hover:bg-white text-gray-700 text-xs font-semibold px-3 py-1.5 rounded-lg shadow transition-all"
+                        >
+                          Change
+                        </button>
+                        <button
+                          type="button"
+                          onClick={removeImage}
+                          className="bg-red-500 hover:bg-red-600 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow transition-all"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                      <div className="bg-[#f0faf7] border-t border-[#17745f]/10 px-4 py-2.5 flex items-center gap-2">
+                        <svg className="w-4 h-4 text-[#17745f] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-xs text-[#17745f] font-medium truncate">{receiptImage?.name}</span>
+                      </div>
+                      <input
+                        ref={fileInputRef}
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileInput}
+                        className="hidden"
+                      />
+                    </div>
+                  )}
                 </div>
 
                 {/* Selected Amount Display */}

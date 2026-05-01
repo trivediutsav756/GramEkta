@@ -594,9 +594,9 @@ const Navbar = () => {
           {/* Contact Info – hidden on < lg */}
           <div className="hidden lg:flex items-center flex-1 justify-center">
             {[
-              { label: "Locate Address:", value: "New York City, USA" },
-              { label: "Call us any time:", value: "+163-3654-7896" },
-              { label: "Email us any time:", value: "info@donat.com" },
+              { label: "Locate Address:", value: "Gat. No. 710, At.Post. Kasar Amboli, Ambarvet, Mulshi, Pune-412115" },
+              { label: "Call us any time:", value: "+91 9172605333" },
+              { label: "Email us any time:", value: "gramektafoundation@gmail.com" },
             ].map((item, i) => (
               <div
                 key={i}

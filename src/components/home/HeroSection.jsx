@@ -21,7 +21,6 @@ const slides = [
 const HeroSection = () => {
   const [current, setCurrent] = useState(0);
   const [animating, setAnimating] = useState(false);
-  const [showVideo, setShowVideo] = useState(false);
   const navigate = useNavigate();
 
   const goTo = useCallback(
@@ -158,19 +157,19 @@ const HeroSection = () => {
             </button>
 
             <button
-              onClick={() => setShowVideo(true)}
+              onClick={() => navigate("/donations")}
               className="flex items-center gap-3 bg-yellow-400 hover:bg-yellow-500 text-white font-semibold text-base px-8 py-4 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
             >
               <span className="w-6 h-6 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                 <svg
-                  className="w-3 h-3 text-yellow-400 ml-0.5"
+                  className="w-4 h-4 text-yellow-400"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path d="M8 5v14l11-7z" />
+                  <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
                 </svg>
               </span>
-              Watch Video
+              Donate Now
             </button>
           </div>
         </div>
@@ -217,44 +216,7 @@ const HeroSection = () => {
         </button>
       </section>
 
-      {/* VIDEO MODAL */}
-      {showVideo && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm px-4"
-          onClick={() => setShowVideo(false)}
-        >
-          <div
-            className="relative w-full max-w-3xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-              title="Charity Video"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-            />
-            <button
-              onClick={() => setShowVideo(false)}
-              className="absolute top-3 right-3 w-9 h-9 bg-white/20 hover:bg-white/40 text-white rounded-full flex items-center justify-center transition"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      )}
+
     </>
   );
 };

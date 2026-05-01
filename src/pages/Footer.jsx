@@ -335,11 +335,28 @@ export default function Footer() {
                 fill="#8aabb0"
                 className="flex-shrink-0 mt-0.5"
               >
+                <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path>
+                <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              <div>
+                <p className="text-[#8aabb0] text-xs mb-1">Locate Us:</p>
+                <p className="text-white font-bold text-sm leading-tight">Gat. No. 710, At.Post. Kasar Amboli, Ambarvet, Mulshi, Pune-412115</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3 mb-5">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="#8aabb0"
+                className="flex-shrink-0 mt-0.5"
+              >
                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
               </svg>
               <div>
                 <p className="text-[#8aabb0] text-xs mb-1">Call us any time:</p>
-                <p className="text-white font-bold text-sm">+163-3654-7896</p>
+                <p className="text-white font-bold text-sm">+91 9172605333</p>
               </div>
             </div>
 
@@ -357,7 +374,7 @@ export default function Footer() {
                 <p className="text-[#8aabb0] text-xs mb-1">
                   Email us any time:
                 </p>
-                <p className="text-white font-bold text-sm">info@donat.com</p>
+                <p className="text-white font-bold text-sm">gramektafoundation@gmail.com</p>
               </div>
             </div>
           </div>
@@ -397,8 +414,8 @@ export default function Footer() {
       {/* ── Bottom Bar ── */}
       <div className="bg-[#1a5c48] py-4 px-6 text-center">
         <p className="text-[#cdd] text-sm">
-          © Copyright 2025{" "}
-          <span className="text-yellow-400 font-bold">Donat.</span> All Rights
+          © Copyright 2026{" "}
+          <span className="text-yellow-400 font-bold">Gram Ekta.</span> All Rights
           Reserved.
         </p>
       </div>

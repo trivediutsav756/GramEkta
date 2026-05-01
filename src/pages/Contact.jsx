@@ -86,7 +86,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-sm text-gray-300 mb-1">Call Us Anytime</p>
-                    <p className="font-semibold text-lg">+163-3654-7896</p>
+                    <p className="font-semibold text-lg">+91 9172605333</p>
                   </div>
                 </div>
                 
@@ -98,7 +98,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-sm text-gray-300 mb-1">Email Us</p>
-                    <p className="font-semibold text-lg">info@donat.com</p>
+                    <p className="font-semibold text-lg">gramektafoundation@gmail.com</p>
                   </div>
                 </div>
 
@@ -111,7 +111,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-sm text-gray-300 mb-1">Locate Us</p>
-                    <p className="font-semibold text-lg">New York City, USA</p>
+                    <p className="font-semibold text-lg text-sm leading-tight">Gat. No. 710, At.Post. Kasar Amboli, Ambarvet, Mulshi, Pune-412115</p>
                   </div>
                 </div>
               </div>
