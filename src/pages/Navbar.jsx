@@ -496,6 +496,10 @@ const Navbar = () => {
       path: "/faq",
     },
     {
+      label: "Volunteer",
+      path: "/become-volunteer",
+    },
+    {
       label: "Blog",
       path: "/blogs",
     },
@@ -592,18 +596,18 @@ const Navbar = () => {
           </button>
 
           {/* Contact Info – hidden on < lg */}
-          <div className="hidden lg:flex items-center flex-1 justify-center">
+          <div className="hidden lg:flex items-center flex-1 justify-center overflow-hidden">
             {[
-              { label: "Locate Address:", value: "Gat. No. 710, At.Post. Kasar Amboli, Ambarvet, Mulshi, Pune-412115" },
+              { label: "Locate Address:", value: "Mulshi, Pune - 412115" },
               { label: "Call us any time:", value: "+91 9172605333" },
               { label: "Email us any time:", value: "gramektafoundation@gmail.com" },
             ].map((item, i) => (
               <div
                 key={i}
-                className="px-7 first:pl-0 last:pr-0 border-l border-gray-300 first:border-l-0 flex-shrink-0"
+                className="px-6 first:pl-0 last:pr-0 border-l border-gray-300 first:border-l-0 flex-shrink-0 max-w-[280px]"
               >
-                <p className="text-[13px] text-gray-500 mb-0.5">{item.label}</p>
-                <p className="text-[17px] font-bold text-[#1d1d1d] whitespace-nowrap">
+                <p className="text-[12px] text-gray-500 mb-0.5 uppercase tracking-wider font-semibold">{item.label}</p>
+                <p className="text-[15px] font-bold text-[#1d1d1d] truncate" title={item.value}>
                   {item.value}
                 </p>
               </div>

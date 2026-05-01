@@ -77,6 +77,7 @@ import FarmerEmpowerment from "./pages/FarmerEmpowerment";
 import WomenSkill from "./pages/WomenSkill";
 import Environment from "./pages/Environment";
 import BlogDetail from "./pages/BlogDetail";
+import BecomeVolunteer from "./pages/BecomeVolunteer";
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -106,6 +107,7 @@ const App = () => {
             <Route path="/donations" element={<Donations />} />
             <Route path="/about" element={<About />} />
             <Route path="/faq" element={<Pages />} />
+            <Route path="/become-volunteer" element={<BecomeVolunteer />} />
             <Route path="/services/clean-water" element={<CleanWater />} />
             <Route path="/services/rural-urban" element={<RuralUrban />} />
             <Route path="/services/education-skill" element={<EducationSkill />} />

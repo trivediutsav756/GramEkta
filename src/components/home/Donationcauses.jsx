@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+ 
 const causes = [
   {
     id: 1,
     image: "https://images.unsplash.com/photo-1504386106331-3e4e71712b38?w=600&q=80&fit=crop",
     percent: "2.57%",
     percentColor: "bg-[#1a7a5e]",
-    title: "Raise Fund for Clean & Healthy Water",
+    title: "Road & Footpath Construction",
     raised: 1285,
     goal: 50000,
     barColor: "bg-[#1a7a5e]",
@@ -20,7 +20,7 @@ const causes = [
     image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fit=crop",
     percent: "1.86%",
     percentColor: "bg-orange-500",
-    title: "Help us touch their lives of these youths",
+    title: "Drainage Systems",
     raised: 1305,
     goal: 70000,
     barColor: "bg-orange-500",
@@ -33,7 +33,7 @@ const causes = [
     image: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80&fit=crop",
     percent: "1.08%",
     percentColor: "bg-[#1a7a5e]",
-    title: "Help Children poor Insurance & Medical",
+    title: "Community Halls",
     raised: 860,
     goal: 80000,
     barColor: "bg-[#1a7a5e]",
@@ -46,7 +46,7 @@ const causes = [
     image: "https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=600&q=80&fit=crop",
     percent: "3.20%",
     percentColor: "bg-[#1a7a5e]",
-    title: "Support Education for Rural Children",
+    title: "School Buildings",
     raised: 3200,
     goal: 100000,
     barColor: "bg-[#1a7a5e]",
@@ -59,7 +59,7 @@ const causes = [
     image: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=600&q=80&fit=crop",
     percent: "2.10%",
     percentColor: "bg-orange-500",
-    title: "Feed Hungry Families This Winter",
+    title: "Civil Infrastructure",
     raised: 2100,
     goal: 60000,
     barColor: "bg-orange-500",
@@ -72,7 +72,7 @@ const causes = [
     image: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=600&q=80&fit=crop",
     percent: "4.50%",
     percentColor: "bg-[#1a7a5e]",
-    title: "Build Shelters for Homeless Communities",
+    title: "Public Utilities",
     raised: 4500,
     goal: 90000,
     barColor: "bg-[#1a7a5e]",
@@ -81,52 +81,52 @@ const causes = [
     btnColor: "bg-[#1a7a5e] hover:bg-[#155f49]",
   },
 ];
-
+ 
 const getVisibleCount = () => {
   if (typeof window === "undefined") return 3;
   if (window.innerWidth < 640) return 1;
   if (window.innerWidth < 1024) return 2;
   return 3;
 };
-
+ 
 const DonationCauses = () => {
   const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
   const [visibleCount, setVisibleCount] = useState(getVisibleCount);
-
+ 
   useEffect(() => {
     const handleResize = () => {
       const next = getVisibleCount();
       setVisibleCount(next);
       setCurrent((prev) => Math.min(prev, Math.max(0, causes.length - next)));
     };
-
+ 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
+ 
   const maxIndex = Math.max(causes.length - visibleCount, 0);
-
+ 
   const slidePrev = () => {
     setCurrent((prev) => Math.max(prev - 1, 0));
   };
-
+ 
   const slideNext = () => {
     setCurrent((prev) => Math.min(prev + 1, maxIndex));
   };
-
+ 
   const getCardWidth = () => {
     if (visibleCount === 1) return "100%";
     if (visibleCount === 2) return "calc((100% - 20px) / 2)";
     return "calc((100% - 48px) / 3)";
   };
-
+ 
   const getTranslateValue = () => {
     if (visibleCount === 1) return `-${current * 100}%`;
     if (visibleCount === 2) return `calc(-${current} * ((100% - 20px) / 2 + 20px))`;
     return `calc(-${current} * ((100% - 48px) / 3 + 24px))`;
   };
-
+ 
   return (
     <section className="relative w-full overflow-hidden bg-[#f5f0e8] px-4 py-12 sm:py-16 lg:py-20">
       {/* Decorative doodle */}
@@ -165,7 +165,7 @@ const DonationCauses = () => {
           />
         </svg>
       </div>
-
+ 
       <div className="mx-auto max-w-6xl">
         {/* Slider */}
         <div className="relative">
@@ -198,31 +198,22 @@ const DonationCauses = () => {
                         {cause.percent}
                       </span>
                     </div>
-
+ 
                     {/* Body */}
                     <div className="flex flex-1 flex-col p-4 sm:p-5">
-                      <h3 className="mb-3 min-h-[48px] text-base font-bold leading-snug text-gray-900 sm:mb-4 sm:min-h-[56px] sm:text-lg">
+                      <h3 className="text-base font-bold leading-snug text-gray-900 sm:text-lg">
                         {cause.title}
                       </h3>
-
-                      <div className={`mb-3 h-2 w-full rounded-full ${cause.barBg}`}>
-                        <div
-                          className={`h-2 rounded-full ${cause.barColor}`}
-                          style={{ width: cause.percent }}
-                        />
-                      </div>
-
+ 
+                   
+ 
                       <p className="mb-4 flex flex-wrap gap-x-1 text-xs text-gray-500 sm:mb-5 sm:text-sm">
-                        <span>Raised -</span>
                         <span className="font-semibold text-gray-700">
-                          ${cause.raised.toLocaleString()}.00
                         </span>
-                        <span>Goal -</span>
                         <span className={`font-semibold ${cause.goalColor}`}>
-                          ${cause.goal.toLocaleString()}.00
                         </span>
                       </p>
-
+ 
                       <button
                         onClick={() => navigate("/donations")}
                         className={`mt-auto flex w-fit items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow transition-all duration-200 sm:px-6 sm:py-3 ${cause.btnColor}`}
@@ -248,7 +239,7 @@ const DonationCauses = () => {
               ))}
             </div>
           </div>
-
+ 
           {/* Navigation */}
           <div className="mt-8 flex items-center justify-center gap-4 sm:mt-10">
             <button
@@ -271,7 +262,7 @@ const DonationCauses = () => {
                 />
               </svg>
             </button>
-
+ 
             <button
               onClick={slideNext}
               disabled={current === maxIndex}
@@ -298,5 +289,6 @@ const DonationCauses = () => {
     </section>
   );
 };
-
+ 
 export default DonationCauses;
+ 
