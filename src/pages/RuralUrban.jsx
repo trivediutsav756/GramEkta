@@ -1,100 +1,189 @@
-import React from "react";
-import logo from "../assets/image-rmvbg.png";
+import React, { useEffect } from "react";
+import logo from "../assets/logo.jpeg";
+import ruralUrbanBg from "../assets/hero.png";
+import { Building2, School, Construction, Users, Map, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 const RuralUrban = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-white font-sans">
-      {/* Header Banner */}
-      <div className="flex flex-col md:flex-row items-stretch w-full border-b-[6px] border-[#d4814e]">
-        {/* Left green section */}
-        <div className="flex-1 bg-[#336545] text-white flex items-center px-4 sm:px-6 md:px-12 py-5 sm:py-6">
-          <div className="flex items-start sm:items-center gap-3 sm:gap-4 md:gap-6 w-full">
-            {/* Road Icon */}
-            <svg
-              viewBox="0 0 50 36"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="flex-shrink-0 w-8 sm:w-10 md:w-[50px] mt-1 sm:mt-0"
-            >
-              <path d="M18 4 L4 32 L16 32 L23 4 Z" fill="white" />
-              <path d="M32 4 L46 32 L34 32 L27 4 Z" fill="white" />
-              <rect x="23.5" y="4" width="3" height="6" fill="white" />
-              <rect x="23.5" y="15" width="3" height="6" fill="white" />
-              <rect x="23.5" y="26" width="3" height="6" fill="white" />
-            </svg>
-            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold font-serif tracking-wide flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4" style={{ fontFamily: "Georgia, serif" }}>
-              <span className="text-3xl sm:text-4xl md:text-5xl font-black leading-none">01</span>
-              <span className="leading-tight sm:leading-normal">Rural & Urban Development</span>
-            </h1>
-          </div>
+    <div className="min-h-screen bg-[#f8fafc] font-sans overflow-x-hidden text-gray-800 pt-1 md:pt-4">
+      {/* Theme-Consistent Hero Banner */}
+      <section className="relative bg-[#17745f] py-16 md:py-24">
+        {/* Subtle Relatable Image Overlay */}
+        <div className="absolute inset-0 opacity-15">
+          <img 
+            src={ruralUrbanBg} 
+            alt="Rural & Urban Development"
+            className="w-full h-full object-cover mix-blend-overlay"
+          />
         </div>
         
-        {/* Right logo section */}
-        <div className="bg-white px-4 py-3 sm:px-8 sm:py-4 flex items-center justify-center flex-shrink-0 border-t-2 md:border-t-0 border-[#f4f7f6] md:border-none min-w-[full] md:min-w-[150px] lg:min-w-[200px]">
-          <img src={logo} alt="Gram Ekta Foundation" className="h-16 sm:h-20 md:h-28 object-contain" />
+        {/* Subtle Decorative Pattern */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0 100 C 20 0, 50 0, 100 100 Z" fill="white" />
+          </svg>
         </div>
-      </div>
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8 md:py-12 bg-white">
-        {/* Intro Text */}
-        <p className="text-base sm:text-lg md:text-xl text-[#515c6b] italic mb-10 md:mb-14 font-medium max-w-5xl leading-relaxed">
-          Gram Ekta Foundation undertakes comprehensive infrastructure development to improve quality of life in both rural and urban communities, operating entirely without profit motive.
-        </p>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+          {/* Left: Text Content */}
+          <div className="flex-1 text-center lg:text-left animate-fade-in-up">
+            <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-8 font-serif">
+              Rural & Urban <br />
+              <span className="text-[#fcd34d]">Development</span>
+            </h1>
+            
+            <p className="text-white/90 text-lg md:text-xl max-w-2xl leading-relaxed italic border-l-4 border-[#f5b000] pl-6 mx-auto lg:mx-0">
+              "Gram Ekta Foundation undertakes comprehensive infrastructure development to improve quality of life in both rural and urban communities, operating entirely without profit motive."
+            </p>
+          </div>
 
-        {/* Grid Layout (3 columns on desktop) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {/* Right: Branding */}
+          <div className="flex-shrink-0 animate-fade-in w-full lg:w-auto flex justify-center">
+             {/* Logo placeholder consistent with template */}
+          </div>
+        </div>
+
+        {/* Bottom Wave Divider */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-[calc(100%+1.3px)] h-[50px] md:h-[80px]">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#f8fafc"></path>
+          </svg>
+        </div>
+      </section>
+
+      {/* Main Content Sections */}
+      <main className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           
-          {/* Card 1 */}
-          <div className="bg-[#e9f2eb] border border-[#b8dac4] border-l-[8px] border-l-[#336545] p-5 sm:p-6 md:p-8 flex flex-col shadow-sm">
-            <h3 className="text-[#1f3d2a] font-bold text-lg sm:text-xl mb-3 md:mb-4 leading-tight">Road & Footpath Construction</h3>
-            <p className="text-[#4b5a51] text-sm md:text-base leading-relaxed">
-              Building and repairing roads, footpaths and culverts to connect communities and improve mobility.
-            </p>
+          {/* Section 1: INFRASTRUCTURE & CONNECTIVITY */}
+          <div className="space-y-8">
+            <div className="inline-flex items-center gap-4 bg-[#17745f]/5 px-6 py-3 rounded-full border border-[#17745f]/10">
+              <Map className="text-[#17745f] w-6 h-6" />
+              <h2 className="text-2xl font-bold text-[#17745f] tracking-tight uppercase">Infrastructure & Connectivity</h2>
+            </div>
+
+            <div className="grid gap-6">
+              {[
+                {
+                  title: "Road & Footpath Construction",
+                  desc: "Building and repairing roads, footpaths and culverts to connect communities and improve mobility.",
+                  icon: <Map className="w-6 h-6" />,
+                },
+                {
+                  title: "Drainage Systems",
+                  desc: "Installing and maintaining drainage infrastructure to prevent waterlogging and flooding.",
+                  icon: <Construction className="w-6 h-6" />,
+                },
+                {
+                  title: "Civil Infrastructure",
+                  desc: "Comprehensive civil infrastructure works for the overall benefit and welfare of the community.",
+                  icon: <ShieldCheck className="w-6 h-6" />,
+                }
+              ].map((item, idx) => (
+                <div 
+                  key={idx} 
+                  className="group bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="flex items-start gap-5">
+                    <div className="p-3 rounded-xl bg-[#17745f]/5 text-[#17745f] group-hover:bg-[#17745f] group-hover:text-white transition-colors duration-300">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#17745f] transition-colors">{item.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Card 2 */}
-          <div className="bg-[#e9f2eb] border border-[#b8dac4] border-l-[8px] border-l-[#336545] p-5 sm:p-6 md:p-8 flex flex-col shadow-sm">
-            <h3 className="text-[#1f3d2a] font-bold text-lg sm:text-xl mb-3 md:mb-4 leading-tight">Drainage Systems</h3>
-            <p className="text-[#4b5a51] text-sm md:text-base leading-relaxed">
-              Installing and maintaining drainage infrastructure to prevent waterlogging and flooding.
-            </p>
-          </div>
+          {/* Section 2: COMMUNITY & PUBLIC UTILITIES */}
+          <div className="space-y-8">
+            <div className="inline-flex items-center gap-4 bg-[#f5b000]/5 px-6 py-3 rounded-full border border-[#f5b000]/10">
+              <Users className="text-[#f5b000] w-6 h-6" />
+              <h2 className="text-2xl font-bold text-[#f5b000] tracking-tight uppercase">Community & Public Utilities</h2>
+            </div>
 
-          {/* Card 3 */}
-          <div className="bg-[#e9f2eb] border border-[#b8dac4] border-l-[8px] border-l-[#336545] p-5 sm:p-6 md:p-8 flex flex-col shadow-sm">
-            <h3 className="text-[#1f3d2a] font-bold text-lg sm:text-xl mb-3 md:mb-4 leading-tight">Community Halls</h3>
-            <p className="text-[#4b5a51] text-sm md:text-base leading-relaxed">
-              Constructing multipurpose community halls for local gatherings, events and social activities.
-            </p>
-          </div>
-
-          {/* Card 4 */}
-          <div className="bg-[#e9f2eb] border border-[#b8dac4] border-l-[8px] border-l-[#336545] p-5 sm:p-6 md:p-8 flex flex-col shadow-sm">
-            <h3 className="text-[#1f3d2a] font-bold text-lg sm:text-xl mb-3 md:mb-4 leading-tight">School Buildings</h3>
-            <p className="text-[#4b5a51] text-sm md:text-base leading-relaxed">
-              Building educational infrastructure including classrooms, libraries and essential school facilities.
-            </p>
-          </div>
-
-          {/* Card 5 */}
-          <div className="bg-[#e9f2eb] border border-[#b8dac4] border-l-[8px] border-l-[#336545] p-5 sm:p-6 md:p-8 flex flex-col shadow-sm">
-            <h3 className="text-[#1f3d2a] font-bold text-lg sm:text-xl mb-3 md:mb-4 leading-tight">Civil Infrastructure</h3>
-            <p className="text-[#4b5a51] text-sm md:text-base leading-relaxed">
-              Comprehensive civil infrastructure works for the overall benefit and welfare of the community.
-            </p>
-          </div>
-
-          {/* Card 6 */}
-          <div className="bg-[#e9f2eb] border border-[#b8dac4] border-l-[8px] border-l-[#336545] p-5 sm:p-6 md:p-8 flex flex-col shadow-sm">
-            <h3 className="text-[#1f3d2a] font-bold text-lg sm:text-xl mb-3 md:mb-4 leading-tight">Public Utilities</h3>
-            <p className="text-[#4b5a51] text-sm md:text-base leading-relaxed">
-              Repair and maintenance of essential public utility structures and civic amenities.
-            </p>
+            <div className="grid gap-6">
+              {[
+                {
+                  title: "Community Halls",
+                  desc: "Constructing multipurpose community halls for local gatherings, events and social activities.",
+                  icon: <Building2 className="w-6 h-6" />,
+                },
+                {
+                  title: "School Buildings",
+                  desc: "Building educational infrastructure including classrooms, libraries and essential school facilities.",
+                  icon: <School className="w-6 h-6" />,
+                },
+                {
+                  title: "Public Utilities",
+                  desc: "Repair and maintenance of essential public utility structures and civic amenities.",
+                  icon: <CheckCircle2 className="w-6 h-6" />,
+                }
+              ].map((item, idx) => (
+                <div 
+                  key={idx} 
+                  className="group bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="flex items-start gap-5">
+                    <div className="p-3 rounded-xl bg-[#f5b000]/5 text-[#f5b000] group-hover:bg-[#f5b000] group-hover:text-white transition-colors duration-300">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#f5b000] transition-colors">{item.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
         </div>
-      </div>
+
+        {/* Footer Call to Action (Theme-Consistent) */}
+        <div className="mt-20 p-8 md:p-12 rounded-3xl bg-[#17745f] text-center text-white shadow-2xl relative overflow-hidden group">
+          {/* Subtle patterns */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl group-hover:scale-110 transition-transform duration-700" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#f5b000]/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl group-hover:scale-110 transition-transform duration-700" />
+          
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 font-serif">Support our Development Initiatives</h2>
+            <p className="text-white/80 mb-8 leading-relaxed">
+              Every contribution helps us build stronger, more connected communities through essential infrastructure development.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button className="bg-[#f5b000] hover:bg-[#e0a100] text-white font-bold px-8 py-4 rounded-full transition-all duration-200 transform hover:-translate-y-0.5 shadow-lg">
+                Donate Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <style>{`
+        @keyframes fade-in-up {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fade-in {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        .animate-fade-in-up {
+          animation: fade-in-up 0.8s ease-out forwards;
+        }
+        .animate-fade-in {
+          animation: fade-in 1s ease-out forwards;
+        }
+      `}</style>
     </div>
   );
 };

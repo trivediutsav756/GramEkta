@@ -1,127 +1,193 @@
-import React from "react";
-import logo from "../assets/image-rmvbg.png";
+import React, { useEffect } from "react";
+import logo from "../assets/logo.jpeg";
+import heroImg from "../assets/hero.png";
+import {
+  Sprout,
+  Wrench,
+  Leaf,
+  Droplets,
+  ClipboardCheck,
+  CheckCircle2,
+  TrendingUp,
+  Users
+} from "lucide-react";
 
 const FarmerEmpowerment = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-[#f3f7f2] font-sans">
-      {/* Header Banner */}
-      <div className="flex flex-col md:flex-row items-stretch w-full border-b-[6px] border-[#d19e34]">
-        {/* Left olive green section */}
-        <div className="flex-1 bg-[#42632b] text-white flex items-center px-4 sm:px-6 md:px-12 py-5 sm:py-6">
-          <div className="flex items-start sm:items-center gap-3 sm:gap-4 md:gap-6 w-full">
-            {/* Sprout Icon */}
-            <svg
-              viewBox="0 0 64 64"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="flex-shrink-0 w-10 sm:w-12 md:w-[60px] mt-1 sm:mt-0"
-            >
-              <path d="M32 35 V60" stroke="white" strokeWidth="6" strokeLinecap="round" />
-              <path d="M32 40 C 15 40 5 30 5 15 C 20 15 32 25 32 40 Z" fill="white" />
-              <path d="M32 30 C 45 30 55 20 55 5 C 40 5 32 15 32 30 Z" fill="white" />
-            </svg>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-serif tracking-wide flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4" style={{ fontFamily: "Georgia, serif" }}>
-              <span className="text-3xl sm:text-4xl md:text-5xl font-black leading-none">04</span>
-              <span className="leading-tight sm:leading-normal">Farmer Empowerment & Agricultural Development</span>
+    <div className="min-h-screen bg-[#f8fafc] font-sans overflow-x-hidden text-gray-800 pt-1 md:pt-4">
+      {/* Theme-Consistent Hero Banner */}
+      <section className="relative bg-[#17745f] py-16 md:py-24">
+        {/* Subtle Relatable Image Overlay */}
+        <div className="absolute inset-0 opacity-10">
+          <img
+            src={heroImg}
+            alt="Background"
+            className="w-full h-full object-cover mix-blend-overlay"
+          />
+        </div>
+
+        {/* Subtle Decorative Pattern */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0 100 C 20 0, 50 0, 100 100 Z" fill="white" />
+          </svg>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+          {/* Left: Text Content */}
+          <div className="flex-1 text-center lg:text-left animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 bg-white/10 text-[#fcd34d] px-4 py-2 rounded-full mb-6 backdrop-blur-sm border border-white/10">
+              <Sprout size={18} />
+              <span className="text-sm font-bold uppercase tracking-wider">Our Initiative 04</span>
+            </div>
+
+            <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-8 font-serif">
+              Farmer <br />
+              <span className="text-[#fcd34d]">Empowerment</span>
             </h1>
+
+            <p className="text-white/90 text-lg md:text-xl max-w-2xl leading-relaxed italic border-l-4 border-[#f5b000] pl-6 mx-auto lg:mx-0">
+              "Supporting farmers with modern tools, knowledge, sustainable practices and government scheme facilitation to build thriving agricultural communities."
+            </p>
           </div>
         </div>
-        
-        {/* Right logo section */}
-        <div className="bg-white px-4 py-3 sm:px-8 sm:py-4 flex items-center justify-center flex-shrink-0 border-t-2 md:border-t-0 border-[#f3f7f2] md:border-none min-w-[full] md:min-w-[150px] lg:min-w-[200px]">
-          <img src={logo} alt="Gram Ekta Foundation" className="h-16 sm:h-20 md:h-28 object-contain" />
+
+        {/* Bottom Wave Divider */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-[calc(100%+1.3px)] h-[50px] md:h-[80px]">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#f8fafc"></path>
+          </svg>
         </div>
-      </div>
+      </section>
 
-      {/* Main Content */}
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 py-8 md:py-12 bg-[#f3f7f2]">
-        {/* Intro Text */}
-        <p className="text-base sm:text-lg md:text-xl text-[#4a6b53] italic mb-10 md:mb-14 font-medium max-w-5xl leading-relaxed">
-          Supporting farmers with modern tools, knowledge, sustainable practices and government scheme facilitation to build thriving agricultural communities.
-        </p>
+      {/* Main Content Sections */}
+      <main className="max-w-7xl mx-auto px-6 py-16 md:py-24">
 
-        {/* Grid Layout (5 columns on very large screens) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 md:gap-8">
-          
-          {/* Card 1 */}
-          <div className="bg-white border border-[#c4dbca] border-t-[8px] border-t-[#397545] p-6 sm:p-8 flex flex-col items-center text-center shadow-sm rounded-b-md">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#397545] flex items-center justify-center mb-6 shadow-sm">
-              <svg viewBox="0 0 64 64" className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none">
-                <path d="M32 35 V55" stroke="currentColor" strokeWidth="5" strokeLinecap="round" />
-                <path d="M32 40 C 18 40 10 30 10 18 C 22 18 32 26 32 40 Z" fill="currentColor" />
-                <path d="M32 30 C 42 30 50 22 50 10 C 38 10 32 18 32 30 Z" fill="currentColor" />
-              </svg>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+
+          {/* Section 1: KNOWLEDGE & TOOLS */}
+          <div className="space-y-8">
+            <div className="inline-flex items-center gap-4 bg-[#17745f]/5 px-6 py-3 rounded-full border border-[#17745f]/10">
+              <TrendingUp className="text-[#17745f] w-6 h-6" />
+              <h2 className="text-2xl font-bold text-[#17745f] tracking-tight uppercase">Knowledge & Tools</h2>
             </div>
-            <h3 className="text-[#397545] font-bold text-base sm:text-lg mb-4 leading-tight">Awareness & Training</h3>
-            <p className="text-[#6a766c] text-sm leading-relaxed">
-              Farmer awareness camps, field training and capacity building workshops on modern methods.
-            </p>
+
+            <div className="grid gap-6">
+              {[
+                {
+                  title: "Awareness & Training",
+                  desc: "Farmer awareness camps, field training and capacity building workshops on modern methods.",
+                  icon: <Sprout className="w-6 h-6" />,
+                },
+                {
+                  title: "Modern Tools Supply",
+                  desc: "Providing modern agricultural tools, equipment, and technology inputs to farmers.",
+                  icon: <Wrench className="w-6 h-6" />,
+                }
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="group bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="flex items-start gap-5">
+                    <div className="p-3 rounded-xl bg-[#17745f]/5 text-[#17745f] group-hover:bg-[#17745f] group-hover:text-white transition-colors duration-300">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#17745f] transition-colors">{item.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Card 2 */}
-          <div className="bg-white border border-[#c4dbca] border-t-[8px] border-t-[#397545] p-6 sm:p-8 flex flex-col items-center text-center shadow-sm rounded-b-md">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#397545] flex items-center justify-center mb-6 shadow-sm">
-              <svg viewBox="0 0 64 64" className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none" stroke="currentColor" strokeWidth="5">
-                <circle cx="28" cy="28" r="14" />
-                <path d="M38 38 L52 52" strokeLinecap="round" />
-                <path d="M28 20 C 32 20 34 24 34 28" strokeLinecap="round" />
-              </svg>
+          {/* Section 2: SUSTAINABILITY & SUPPORT */}
+          <div className="space-y-8">
+            <div className="inline-flex items-center gap-4 bg-[#f5b000]/5 px-6 py-3 rounded-full border border-[#f5b000]/10">
+              <Users className="text-[#f5b000] w-6 h-6" />
+              <h2 className="text-2xl font-bold text-[#f5b000] tracking-tight uppercase">Sustainability & Support</h2>
             </div>
-            <h3 className="text-[#397545] font-bold text-base sm:text-lg mb-4 leading-tight">Modern Tools Supply</h3>
-            <p className="text-[#6a766c] text-sm leading-relaxed">
-              Providing modern agricultural tools, equipment, and technology inputs to farmers.
-            </p>
-          </div>
 
-          {/* Card 3 */}
-          <div className="bg-white border border-[#c4dbca] border-t-[8px] border-t-[#397545] p-6 sm:p-8 flex flex-col items-center text-center shadow-sm rounded-b-md">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#397545] flex items-center justify-center mb-6 shadow-sm">
-              <svg viewBox="0 0 64 64" className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none">
-                <path d="M12 32 C 12 10 32 10 52 10 C 52 32 32 52 12 32 Z" fill="currentColor" />
-                <path d="M12 52 L52 10" stroke="#397545" strokeWidth="3" />
-              </svg>
+            <div className="grid gap-6">
+              {[
+                {
+                  title: "Sustainable Farming",
+                  desc: "Promoting sustainable, eco-friendly farming practices for long-term soil and crop health.",
+                  icon: <Leaf className="w-6 h-6" />,
+                },
+                {
+                  title: "Irrigation Support",
+                  desc: "Planning and facilitating irrigation support systems for consistent and reliable water access.",
+                  icon: <Droplets className="w-6 h-6" />,
+                },
+                {
+                  title: "Scheme Facilitation",
+                  desc: "Helping farmers access government and non-government agricultural schemes and benefits.",
+                  icon: <ClipboardCheck className="w-6 h-6" />,
+                }
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="group bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="flex items-start gap-5">
+                    <div className="p-3 rounded-xl bg-[#f5b000]/5 text-[#f5b000] group-hover:bg-[#f5b000] group-hover:text-white transition-colors duration-300">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#f5b000] transition-colors">{item.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-            <h3 className="text-[#397545] font-bold text-base sm:text-lg mb-4 leading-tight">Sustainable Farming</h3>
-            <p className="text-[#6a766c] text-sm leading-relaxed">
-              Promoting sustainable, eco-friendly farming practices for long-term soil and crop health.
-            </p>
-          </div>
-
-          {/* Card 4 */}
-          <div className="bg-white border border-[#c4dbca] border-t-[8px] border-t-[#397545] p-6 sm:p-8 flex flex-col items-center text-center shadow-sm rounded-b-md">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#397545] flex items-center justify-center mb-6 shadow-sm">
-              <svg viewBox="0 0 64 64" className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none">
-                <path d="M12 24 C 18 20 26 28 32 24 C 38 20 46 28 52 24" stroke="currentColor" strokeWidth="5" strokeLinecap="round" />
-                <path d="M12 34 C 18 30 26 38 32 34 C 38 30 46 38 52 34" stroke="currentColor" strokeWidth="5" strokeLinecap="round" />
-                <path d="M12 44 C 18 40 26 48 32 44 C 38 40 46 48 52 44" stroke="currentColor" strokeWidth="5" strokeLinecap="round" />
-              </svg>
-            </div>
-            <h3 className="text-[#397545] font-bold text-base sm:text-lg mb-4 leading-tight">Irrigation Support</h3>
-            <p className="text-[#6a766c] text-sm leading-relaxed">
-              Planning and facilitating irrigation support systems for consistent and reliable water access.
-            </p>
-          </div>
-
-          {/* Card 5 */}
-          <div className="bg-white border border-[#c4dbca] border-t-[8px] border-t-[#397545] p-6 sm:p-8 flex flex-col items-center text-center shadow-sm rounded-b-md">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#397545] flex items-center justify-center mb-6 shadow-sm">
-              <svg viewBox="0 0 64 64" className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M22 34 L32 24 L42 34" />
-                <path d="M14 42 L24 32 L40 48" />
-                <path d="M40 36 L50 46" />
-                <path d="M22 34 C 16 34 16 42 22 42" />
-                <path d="M42 34 C 48 34 48 42 42 42" />
-                <circle cx="32" cy="46" r="2" fill="currentColor" />
-              </svg>
-            </div>
-            <h3 className="text-[#397545] font-bold text-base sm:text-lg mb-4 leading-tight">Scheme Facilitation</h3>
-            <p className="text-[#6a766c] text-sm leading-relaxed">
-              Helping farmers access government and non-government agricultural schemes and benefits.
-            </p>
           </div>
 
         </div>
-      </div>
+
+        {/* Footer Call to Action */}
+        <div className="mt-20 p-8 md:p-12 rounded-3xl bg-[#17745f] text-center text-white shadow-2xl relative overflow-hidden group">
+          {/* Subtle patterns */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl group-hover:scale-110 transition-transform duration-700" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#f5b000]/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl group-hover:scale-110 transition-transform duration-700" />
+
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 font-serif">Support our Agricultural Initiatives</h2>
+            <p className="text-white/80 mb-8 leading-relaxed">
+              Your contribution helps us provide farmers with the resources and knowledge they need to thrive and build sustainable livelihoods.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button className="bg-[#f5b000] hover:bg-[#e0a100] text-white font-bold px-8 py-4 rounded-full transition-all duration-200 transform hover:-translate-y-0.5 shadow-lg">
+                Donate Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <style>{`
+        @keyframes fade-in-up {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fade-in {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        .animate-fade-in-up {
+          animation: fade-in-up 0.8s ease-out forwards;
+        }
+        .animate-fade-in {
+          animation: fade-in 1s ease-out forwards;
+        }
+      `}</style>
     </div>
   );
 };

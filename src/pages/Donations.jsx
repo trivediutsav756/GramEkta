@@ -272,7 +272,7 @@ const Donations = () => {
                   <select
                     id="category_id"
                     name="category_id"
-                    value={formData.category_id}
+                    value={formData.category_id}    
                     onChange={handleChange}
                     required
                     className="px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#17745f]/40 focus:border-[#17745f] transition-all duration-200 text-sm appearance-none cursor-pointer"
