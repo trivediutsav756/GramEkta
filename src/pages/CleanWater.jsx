@@ -14,9 +14,9 @@ const CleanWater = () => {
       <section className="relative  bg-[#17745f] py-16 md:py-24 ">
         {/* Subtle Relatable Image Overlay */}
         <div className="absolute inset-0 opacity-15">
-          <div 
+          <img 
             src={cleanWaterBg} 
-          
+            alt="Clean Water Background"
             className="w-full h-full object-cover mix-blend-overlay"
           />
           

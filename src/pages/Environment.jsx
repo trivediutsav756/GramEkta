@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import logo from "../assets/image-rmvbg.png";
-import { TreePine, Leaf, Recycle, Waves, Wind, GraduationCap } from "lucide-react";
+import logo from "../assets/logo.jpeg";
+import environmentBg from "../assets/environment.png";
+import { TreePine, Leaf, Recycle, Waves, Wind, GraduationCap, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 const Environment = () => {
   useEffect(() => {
@@ -11,6 +12,15 @@ const Environment = () => {
     <div className="min-h-screen bg-[#f8fafc] font-sans overflow-x-hidden text-gray-800 pt-1 md:pt-4">
       {/* Theme-Consistent Hero Banner */}
       <section className="relative bg-[#17745f] py-16 md:py-24">
+        {/* Subtle Relatable Image Overlay */}
+        <div className="absolute inset-0 opacity-15">
+          <img 
+            src={environmentBg} 
+            alt="Environment Background"
+            className="w-full h-full object-cover mix-blend-overlay"
+          />
+        </div>
+
         {/* Subtle Decorative Pattern */}
         <div className="absolute inset-0 opacity-5 pointer-events-none">
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -33,7 +43,7 @@ const Environment = () => {
 
           {/* Right: Branding */}
           <div className="flex-shrink-0 animate-fade-in w-full lg:w-auto flex justify-center">
-             <img src={logo} alt="Gram Ekta Foundation" className="h-32 md:h-48 object-contain brightness-0 invert opacity-20" />
+             {/* Logo placeholder consistent with CleanWater */}
           </div>
         </div>
 
