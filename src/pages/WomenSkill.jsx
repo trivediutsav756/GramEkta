@@ -87,7 +87,7 @@ const WomenSkill = () => {
                 </div>
               </div>
 
-              {/* Card 3 */}
+              {/* Card 3 */}  
               <div className="bg-white border border-[#e8a5b8] p-5 sm:p-6 flex items-start gap-4 sm:gap-6 shadow-sm">
                 <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#851d41] flex items-center justify-center flex-shrink-0">
                   <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
