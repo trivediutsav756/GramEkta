@@ -192,7 +192,8 @@ export default function FAQSection() {
           <Box sx={{ position: "absolute", top: -20, left: -20, w: 100, h: 100, bgcolor: "white", opacity: 0.05, borderRadius: "50%" }} />
           <Typography variant="h5" sx={{ fontWeight: 800, mb: 2 }}>Still Have Questions?</Typography>
           <Typography sx={{ color: "rgba(255,255,255,0.8)", mb: 4, maxWidth: "500px", mx: "auto" }}>
-            Can't find the answer you're looking for? Please chat to our friendly team.
+            Can’t find the answer you’re looking for?
+            Contact us and our team will get back to you shortly.
           </Typography>
           <Box
             component="a"
