@@ -90,10 +90,7 @@ const OurVolunteers = () => {
           <img
             src={volunteer.image}
             alt={volunteer.name}
-            className="h-[185px] w-full rounded-t-[34px] rounded-b-[130px] object-contain object-center p-4"
-            onError={(e) => {
-              e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(volunteer.name)}&background=1b7561&color=fff&bold=true`;
-            }}
+            className="h-[185px] w-full rounded-t-[34px] rounded-b-[130px] object-cover object-top"
           />
         </div>
         {/* Plus Button */}
