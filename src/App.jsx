@@ -80,6 +80,8 @@ import BlogDetail from "./pages/BlogDetail";
 import BecomeVolunteer from "./pages/BecomeVolunteer";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 
+import FaqPage from "./pages/FaqPage";
+
 // Scroll to top on route change
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -107,7 +109,7 @@ const App = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/donations" element={<Donations />} />
             <Route path="/about" element={<About />} />
-            <Route path="/faq" element={<Pages />} />
+            <Route path="/faq" element={<FaqPage />} />
             <Route path="/become-volunteer" element={<BecomeVolunteer />} />
             <Route path="/services/clean-water" element={<CleanWater />} />
             <Route path="/services/rural-urban" element={<RuralUrban />} />

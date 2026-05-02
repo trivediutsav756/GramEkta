@@ -164,7 +164,7 @@
 //         </button>
 //       </div>
 
-      
+
 //     </section>
 //   );
 // }
@@ -241,7 +241,7 @@ export default function NewsSection() {
   return (
     <section className="relative bg-gray-100 py-12 sm:py-14 px-4 sm:px-6 overflow-hidden font-[Nunito,sans-serif]">
       <h2 className="text-center text-2xl sm:text-3xl font-black text-gray-900 mb-8 sm:mb-10">
-        Our Latest News &amp; Articles
+        Blogs
       </h2>
 
       <div className="relative flex items-center justify-center px-10 sm:px-14">
@@ -347,7 +347,7 @@ export default function NewsSection() {
         </button>
       </div>
 
-     
+
     </section>
   );
 }

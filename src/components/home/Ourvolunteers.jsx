@@ -94,8 +94,8 @@ const OurVolunteers = () => {
           />
         </div>
         {/* Plus Button */}
-        <div className="absolute bottom-0 left-1/2 z-[10] flex h-12 w-12 -translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full bg-[#1b7561] shadow-lg transition-all duration-300 group-hover:bg-[#f3b300]">
-          <span className="text-[32px] font-light leading-none text-white">+</span>
+        <div className="absolute bottom-0 left-1/2 z-[10] flex h-10 w-10 -translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full bg-[#1b7561] shadow-lg transition-all duration-300 group-hover:bg-[#f3b300]">
+          <span className="text-[24px] font-light leading-none text-white">+</span>
         </div>
       </div>
 

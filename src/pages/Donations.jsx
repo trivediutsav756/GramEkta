@@ -97,7 +97,7 @@ const Donations = () => {
 
       if (!response.ok) throw new Error('Failed');
 
-      setStatusMessage({ type: 'success', text: 'Thank you for your generous donation! Your contribution will make a real difference.' });
+      setStatusMessage({ type: 'success', text: 'Thank you for your generous support! We have received your details.' });
       setShowSuccess(true);
       setFormData({ name: '', email: '', mobile: '', donation_amount: '', category_id: '' });
       removeImage();
@@ -465,8 +465,8 @@ const Donations = () => {
       <SuccessModal 
         isOpen={showSuccess} 
         onClose={() => setShowSuccess(false)}
-        title="Thank You for Your Donation!"
-        message="Your contribution has been received. Your support helps us continue our mission to bring positive change to communities."
+        title="Thank you for your generous support 🙏"
+        message="We have received your donation details and payment proof. Our team will verify your transaction and confirm your donation within 24–48 hours."
         buttonText="Back to Home"
       />
     </div>
