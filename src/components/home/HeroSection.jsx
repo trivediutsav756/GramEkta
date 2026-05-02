@@ -138,7 +138,7 @@ const HeroSection = () => {
                   navigate("/donations");
                 }
               }}
-              className="flex items-center gap-2 bg-[#1a7a5e] hover:bg-[#155f49] text-white font-semibold text-base px-8 py-4 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
+              className="btn-heavy flex items-center gap-2 bg-[#1a7a5e] hover:bg-[#155f49] text-white font-semibold text-base px-8 py-4 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
             >
               Discover Now
               <svg
@@ -158,7 +158,7 @@ const HeroSection = () => {
 
             <button
               onClick={() => navigate("/donations")}
-              className="flex items-center gap-3 bg-yellow-400 hover:bg-yellow-500 text-white font-semibold text-base px-8 py-4 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
+              className="btn-heavy flex items-center gap-3 bg-yellow-400 hover:bg-yellow-500 text-white font-semibold text-base px-8 py-4 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
             >
               <span className="w-6 h-6 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                 <svg

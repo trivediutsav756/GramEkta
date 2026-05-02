@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import girl from '../../assets/girl.png';
-import boy from '../../assets/boy.png';
-import boy2 from '../../assets/boy2.png';
+import avtar1 from '../../assets/avtar.png';
+import avtar2 from '../../assets/avtar2.png';
+import avtar3 from '../../assets/avtar3.png';
 
 const VOLUNTEERS = [
-  { id: 1, name: "Kiran R. Fale", role: "Director", image: girl },
-  { id: 2, name: "Madan D. Thombare", role: "Secretary", image: boy },
-  { id: 3, name: "Sagar S. Sutar", role: "Treasurer", image: boy2 },
+  { id: 1, name: "Kiran R. Fale", role: "Director", image: avtar3 },
+  { id: 2, name: "Madan D. Thombare", role: "Secretary", image: avtar1 },
+  { id: 3, name: "Sagar S. Sutar", role: "Treasurer", image: avtar2 },
 ];
 
 const getVisibleCount = () => {
@@ -90,7 +90,10 @@ const OurVolunteers = () => {
           <img
             src={volunteer.image}
             alt={volunteer.name}
-            className="h-[185px] w-full rounded-t-[34px] rounded-b-[130px] object-cover object-top"
+            className="h-[185px] w-full rounded-t-[34px] rounded-b-[130px] object-contain object-center p-4"
+            onError={(e) => {
+              e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(volunteer.name)}&background=1b7561&color=fff&bold=true`;
+            }}
           />
         </div>
         {/* Plus Button */}

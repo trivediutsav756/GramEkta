@@ -435,8 +435,8 @@ const Donations = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className={`w-full py-4 bg-[#f5b000] text-white font-bold text-base rounded-xl transition-all duration-300 shadow-[0_4px_14px_0_rgba(245,176,0,0.4)] flex items-center justify-center gap-3 ${
-                    loading ? 'opacity-70 cursor-not-allowed' : 'hover:bg-[#e0a200] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(245,176,0,0.35)]'
+                  className={`btn-heavy w-full py-4 bg-[#f5b000] text-white font-bold text-base rounded-xl transition-all duration-300 shadow-[0_4px_14px_0_rgba(245,176,0,0.4)] flex items-center justify-center gap-3 ${
+                    loading ? 'opacity-70 cursor-not-allowed' : 'hover:bg-[#e0a200] hover:shadow-[0_6px_20px_rgba(245,176,0,0.35)]'
                   }`}
                 >
                   {loading ? (

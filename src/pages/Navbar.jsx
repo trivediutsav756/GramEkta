@@ -180,7 +180,7 @@ const Navbar = () => {
               {/* Donate Button */}
               <Link
                 to="/donations"
-                className={`hidden sm:flex items-center gap-2 font-bold text-[14px] px-6 h-11 rounded-full transition-all duration-300 shadow-md uppercase tracking-wider ${
+                className={`btn-heavy hidden sm:flex items-center gap-2 font-bold text-[14px] px-6 h-11 rounded-full transition-all duration-300 shadow-md uppercase tracking-wider ${
                   scrolled 
                   ? "bg-[#17745f] text-white hover:bg-[#115a49]" 
                   : "bg-[#f5b000] text-white hover:bg-[#e0a100]"

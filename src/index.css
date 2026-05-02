@@ -10,9 +10,49 @@
   }
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, #166534, #2b7a4b, #0f766e);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+@layer components {
+  .gradient-text {
+    background: linear-gradient(135deg, #166534, #2b7a4b, #0f766e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Premium Heavy Button Animation */
+  .btn-heavy {
+    @apply relative flex items-center justify-center overflow-hidden transition-all duration-500 z-10 !important;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .btn-heavy:hover {
+    @apply scale-105 shadow-[0_20px_40px_rgba(0,0,0,0.2)] !important;
+    border-radius: 60px !important;
+  }
+
+  /* Liquid Round Animation */
+  .btn-heavy::before {
+    content: '';
+    @apply absolute top-1/2 left-1/2 w-[180%] h-[180%] opacity-0 transition-all duration-1000;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    border-radius: 45%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    z-index: -1;
+  }
+
+  .btn-heavy:hover::before {
+    @apply opacity-100;
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+
+  /* Extra Shine Ripple */
+  .btn-heavy::after {
+    content: '';
+    @apply absolute top-0 -left-full w-full h-full;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: all 0.8s ease;
+  }
+
+  .btn-heavy:hover::after {
+    @apply left-full;
+  }
 }

@@ -359,8 +359,8 @@ const BecomeVolunteer = () => {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full py-4 bg-[#f5b000] text-white font-bold text-lg rounded-xl shadow-[0_10px_20px_rgba(245,176,0,0.3)] transition-all duration-300 flex items-center justify-center gap-3 ${
-                loading ? 'opacity-70 cursor-not-allowed' : 'hover:bg-[#e0a200] hover:shadow-[0_15px_25px_rgba(245,176,0,0.4)] hover:-translate-y-1 active:translate-y-0'
+              className={`btn-heavy w-full py-4 bg-[#f5b000] text-white font-bold text-lg rounded-xl shadow-[0_10px_20px_rgba(245,176,0,0.3)] transition-all duration-300 flex items-center justify-center gap-3 ${
+                loading ? 'opacity-70 cursor-not-allowed' : 'hover:bg-[#e0a200] hover:shadow-[0_15px_25px_rgba(245,176,0,0.4)]'
               }`}
             >
               {loading ? (
