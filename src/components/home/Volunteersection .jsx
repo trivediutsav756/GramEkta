@@ -3,23 +3,25 @@ import { useNavigate } from "react-router-dom";
 const cards = [
   {
     id: 1,
-    title: "Become a volunteer",
+    title: "Be the Change – Volunteer With Us",
     description:
-      "Provide resources such as reports, infographics, and educational materials related to the charity's cause. Use a clear and intuitive navigation menu to help users find information quickly.",
+      "Your time and skills can create a meaningful impact in someone’s life. Join our mission to support communities, educate children, and bring positive change. Whether you can help online or on-ground, every effort counts.",
     image:
       "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=900&q=80&fit=crop",
     accentSide: "right", // gold triangle on right
     path: "/become-volunteer",
+    btnText: "Become a Volunteer",
   },
   {
     id: 2,
-    title: "Join Us volunteer",
+    title: "Your Contribution Matters",
     description:
-      "Provide resources such as reports, infographics, and educational materials related to the charity's cause. Use a clear and intuitive navigation menu to help users find information quickly.",
+      "Your generous support helps us reach those who need it the most. Every donation contributes to education, healthcare, and community development. You can easily donate using bank transfer or UPI and share your details with us.",
     image:
       "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=900&q=80&fit=crop",
     accentSide: "right",
-    path: "/become-volunteer",
+    path: "/donations",
+    btnText: "Donate Now",
   },
 ];
 
@@ -71,7 +73,7 @@ const VolunteerSection = () => {
                   onClick={() => navigate(card.path)}
                   className="flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-white font-bold text-sm px-8 py-3.5 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
                 >
-                  Learn More
+                  {card.btnText}
                   <svg
                     className="w-4 h-4"
                     fill="none"

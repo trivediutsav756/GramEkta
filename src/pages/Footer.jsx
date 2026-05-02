@@ -212,7 +212,7 @@
 //   );
 // }
 import React from "react";
-import logo from "../assets/logo.jpeg";
+import logo from "../assets/image copy 3.png";
  
 export default function Footer() {
   return (
@@ -282,11 +282,11 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="text-[#8aabb0] text-[13px] mb-1 font-medium">Call us any time:</p>
-                  <p className="text-white font-bold text-base tracking-wide">+163-3654-7896</p>
+                  <p className="text-white font-bold text-base tracking-wide">+91 9172605333</p>
                 </div>
               </div>
  
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-4 mb-7">
                 <div className="mt-1">
                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8aabb0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
@@ -296,7 +296,35 @@ export default function Footer() {
                   <p className="text-[#8aabb0] text-[13px] mb-1 font-medium">
                     Email us any time:
                   </p>
-                  <p className="text-white font-bold text-base tracking-wide">info@donat.com</p>
+                  <p className="text-white font-bold text-base tracking-wide">gramektafoundation@gmail.com</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 mb-6">
+                <div className="mt-1">
+                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8aabb0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>
+                   </svg>
+                </div>
+                <div>
+                  <p className="text-[#8aabb0] text-[13px] mb-1 font-medium">Registered Address:</p>
+                  <p className="text-white font-medium text-[14px] leading-relaxed">
+                    Gat. No. 710, At.Post. Kasar Amboli, Ambarvet, Mulshi, Pune-412115
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="mt-1">
+                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8aabb0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>
+                   </svg>
+                </div>
+                <div>
+                  <p className="text-[#8aabb0] text-[13px] mb-1 font-medium">Communication Address:</p>
+                  <p className="text-white font-medium text-[14px] leading-relaxed">
+                    Office No. 09, Govind Heights, A/P. Shindewadi, Tal.Mulshi. Pune-412115
+                  </p>
                 </div>
               </div>
             </div>
