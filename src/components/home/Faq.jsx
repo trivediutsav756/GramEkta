@@ -5,9 +5,8 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  useMediaQuery,
-  useTheme,
   CircularProgress,
+  Container,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
@@ -18,8 +17,6 @@ export default function FAQSection() {
   const [faqs, setFaqs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const theme = useTheme();
-  const isLg = useMediaQuery(theme.breakpoints.up("lg"));
 
   useEffect(() => {
     const fetchFaqs = async () => {
@@ -30,7 +27,6 @@ export default function FAQSection() {
           throw new Error(`HTTP ${response.status}`);
         }
         const data = await response.json();
-        // API returns { data: [...] }
         const faqArray = data?.data || (Array.isArray(data) ? data : []);
         setFaqs(faqArray);
       } catch (err) {
@@ -49,257 +45,175 @@ export default function FAQSection() {
 
   if (loading) {
     return (
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: 400,
-          bgcolor: "#f9fafb",
-        }}
-      >
-        <CircularProgress sx={{ color: "#1a7a5e" }} />
+      <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "60vh", bgcolor: "#f9fafb" }}>
+        <CircularProgress sx={{ color: "#17745f" }} />
       </Box>
     );
   }
 
   if (error) {
     return (
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: 400,
-          bgcolor: "#f9fafb",
-          flexDirection: "column",
-          gap: 2,
-        }}
-      >
+      <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "60vh", bgcolor: "#f9fafb", flexDirection: "column", gap: 2 }}>
         <Typography color="error">Failed to load FAQs. Please try again later.</Typography>
-        <Typography variant="caption" color="text.secondary">
-          {error}
-        </Typography>
-      </Box>
-    );
-  }
-
-  if (!faqs.length) {
-    return (
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: 400,
-          bgcolor: "#f9fafb",
-        }}
-      >
-        <Typography color="text.secondary">No FAQs available at the moment.</Typography>
+        <Typography variant="caption" color="text.secondary">{error}</Typography>
       </Box>
     );
   }
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: { xs: "column", lg: "row" },
-        width: "100%",
-        bgcolor: "#f9fafb",
-        fontFamily: "'Nunito', sans-serif",
-        overflow: "hidden",
-      }}
-    >
-      {/* ── LEFT: Photo column */}
+    <Box sx={{ bgcolor: "#f9fafb", minHeight: "100vh" }}>
+      {/* ── BANNER SECTION ── */}
       <Box
         sx={{
           position: "relative",
-          width: { xs: "100%", lg: "44%" },
-          flexShrink: 0,
+          width: "100%",
+          height: { xs: "250px", sm: "350px", md: "450px" },
           overflow: "hidden",
-          minHeight: { xs: 280, sm: 360, lg: 560 },
-          transition: "none",
-          "& *": { transition: "none !important" },
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        {/* Main background photo */}
         <Box
           component="img"
           src="https://images.unsplash.com/photo-1509099836639-18ba1795216d"
-          alt="Children"
+          alt="FAQ Banner"
           sx={{
             position: "absolute",
-            inset: 0,
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            transform: "none",
-            transition: "none",
-          }}
-          onError={(e) => (e.target.style.display = "none")}
-        />
-        {/* Fallback gradient */}
-        <Box
-          sx={{
-            position: "absolute",
-            inset: 0,
-            background: "linear-gradient(to bottom right, #b45309, #78350f, #064e3b)",
-            zIndex: -1,
-            transition: "none",
+            filter: "brightness(0.6)",
           }}
         />
-
-        {/* Colored hands icon */}
-        <Box
-          sx={{
-            position: "absolute",
-            right: 10,
-            top: "38%",
-            zIndex: 10,
-            display: { xs: "none", sm: "block" },
-          }}
-        >
-          <svg width="72" height="62" viewBox="0 0 72 62">
-            <path d="M20 40 Q14 30 16 18 Q18 8 26 10 Q30 11 31 16 L32 35Z" fill="#f0a500" />
-            <path d="M16 38 Q8 32 10 22 Q12 14 19 16 L22 38Z" fill="#f0a500" opacity="0.7" />
-            <path d="M36 42 Q32 30 35 18 Q37 10 44 12 Q48 14 47 20 L46 40Z" fill="#e8e0d0" />
-            <path d="M50 44 Q48 32 52 20 Q55 12 62 14 Q66 16 65 24 L62 44Z" fill="#2a7a2a" />
-            <ellipse cx="36" cy="48" rx="24" ry="10" fill="#c8a050" opacity="0.4" />
-          </svg>
-        </Box>
-
-      
-        {/* White wave (mobile/tablet) */}
-        {!isLg && (
-          <Box
-            component="svg"
+        <Box sx={{ relative: "z-10", textAlign: "center", px: 4 }}>
+          <Typography
+            variant="h1"
             sx={{
-              position: "absolute",
-              bottom: 0,
-              left: 0,
-              width: "100%",
-              pointerEvents: "none",
-              transition: "none",
+              color: "white",
+              fontWeight: 900,
+              fontSize: { xs: "2.5rem", sm: "3.5rem", md: "4.5rem" },
+              textShadow: "0 4px 12px rgba(0,0,0,0.3)",
+              mb: 2,
             }}
-            viewBox="0 0 400 40"
-            preserveAspectRatio="none"
           >
-            <path d="M0 40 Q100 0 200 20 Q300 40 400 10 L400 40Z" fill="white" />
-          </Box>
-        )}
-
-        {/* Inset grayscale photo */}
-        <Box
-          sx={{
-            position: "absolute",
-            bottom: 32,
-            right: { xs: 16, lg: -16 },
-            zIndex: 20,
-            width: { xs: 128, sm: 160, lg: 170 },
-            height: { xs: 144, sm: 176, lg: 180 },
-            borderRadius: 4,
-            overflow: "hidden",
-            border: "4px solid white",
-            boxShadow: 8,
-            transition: "none",
-          }}
-        >
-          <Box
-            component="img"
-            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-            alt="Child"
-            sx={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              filter: "grayscale(100%)",
-              transition: "none",
-            }}
-            onError={(e) => {
-              e.target.style.display = "none";
-              e.target.parentElement.style.backgroundColor = "#888";
-            }}
-          />
+            FAQ
+          </Typography>
+          <Box sx={{ height: 4, width: 80, bgcolor: "#f5b000", mx: "auto", borderRadius: 2 }} />
         </Box>
       </Box>
 
-      {/* ── RIGHT: FAQ column (dynamic data) ── */}
-      <Box
-        sx={{
-          flex: 1,
-          px: { xs: 3, sm: 5, lg: 7 },
-          py: { xs: 5, lg: 6 },
-          position: "relative",
-        }}
-      >
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 1 }}>
+      {/* ── CONTENT SECTION ── */}
+      <Container maxWidth="md" sx={{ py: { xs: 8, md: 12 } }}>
+        <Box sx={{ textAlign: "center", mb: 8 }}>
+          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 2, mb: 2 }}>
+            <Box sx={{ height: 2, width: 40, bgcolor: "#17745f" }} />
+            <Typography
+              sx={{ color: "#17745f", fontWeight: "bold", textTransform: "uppercase", letterSpacing: "0.1em" }}
+            >
+              Get Answers
+            </Typography>
+            <Box sx={{ height: 2, width: 40, bgcolor: "#17745f" }} />
+          </Box>
           <Typography
-            variant="body2"
-            sx={{ color: "#eab308", fontStyle: "italic", fontWeight: "bold" }}
+            variant="h3"
+            sx={{ color: "#111827", fontWeight: 800, fontSize: { xs: "2rem", md: "2.75rem" } }}
           >
             Frequently Asked Questions
           </Typography>
-          <Box sx={{ height: 2, width: 44, bgcolor: "#eab308", borderRadius: 1 }} />
         </Box>
 
-        <Typography
-          variant="h4"
-          sx={{
-            color: "#111827",
-            fontWeight: 800,
-            mb: { xs: 4, sm: 5 },
-            fontSize: { xs: "1.5rem", sm: "1.875rem" },
-            lineHeight: 1.3,
-            pr: { xs: 4, sm: 0 },
-          }}
-        >
-          Have Any Questions For Us?
-        </Typography>
-
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}>
           {faqs.map((item, index) => (
             <Accordion
               key={item.id || index}
               expanded={expanded === index}
               onChange={handleChange(index)}
               sx={{
-                boxShadow: "none",
+                boxShadow: "0 4px 20px rgba(0,0,0,0.03)",
                 border: "1px solid #e5e7eb",
-                borderRadius: 2,
+                borderRadius: "16px !important",
+                overflow: "hidden",
                 "&:before": { display: "none" },
-                bgcolor: "white",
+                transition: "all 0.3s ease",
+                "&.Mui-expanded": {
+                  boxShadow: "0 12px 30px rgba(0,0,0,0.08)",
+                  borderColor: "#17745f",
+                  transform: "translateY(-2px)",
+                },
               }}
             >
               <AccordionSummary
-                expandIcon={<ExpandMoreIcon sx={{ color: "#0f766e" }} />}
+                expandIcon={<ExpandMoreIcon sx={{ color: "#17745f", fontSize: "1.75rem" }} />}
                 sx={{
-                  px: { xs: 2, sm: 2.5 },
-                  py: 1,
-                  "& .MuiAccordionSummary-content": { my: 1.5 },
+                  px: { xs: 3, sm: 4 },
+                  py: 1.5,
+                  "&.Mui-expanded": { bgcolor: "rgba(23, 116, 95, 0.02)" },
                 }}
               >
                 <Typography
-                  variant="body1"
+                  variant="h6"
                   sx={{
-                    fontWeight: "bold",
+                    fontWeight: 800,
                     color: "#111827",
-                    fontSize: { xs: "0.875rem", sm: "0.9375rem" },
-                    pr: 2,
+                    fontSize: { xs: "1rem", sm: "1.1rem" },
                   }}
                 >
                   {item.questions}
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails sx={{ px: { xs: 2, sm: 2.5 }, pb: 2 }}>
-                <Typography variant="body2" sx={{ color: "#9ca3af", lineHeight: 1.6 }}>
-                  {item.answer}
-                </Typography>
+              <AccordionDetails sx={{ px: { xs: 3, sm: 4 }, pb: 4, pt: 0, bgcolor: "rgba(23, 116, 95, 0.02)" }}>
+                <Box sx={{ pt: 2, borderTop: "1px solid rgba(0,0,0,0.05)" }}>
+                  <Typography
+                    variant="body1"
+                    sx={{ color: "#4b5563", lineHeight: 1.8, fontSize: "1rem" }}
+                  >
+                    {item.answer}
+                  </Typography>
+                </Box>
               </AccordionDetails>
             </Accordion>
           ))}
         </Box>
-      </Box>
+
+        {/* ── STILL HAVE QUESTIONS ── */}
+        <Box
+          sx={{
+            mt: 10,
+            p: { xs: 4, md: 6 },
+            bgcolor: "#17745f",
+            borderRadius: "24px",
+            textAlign: "center",
+            color: "white",
+            position: "relative",
+            overflow: "hidden",
+          }}
+        >
+          <Box sx={{ position: "absolute", top: -20, left: -20, w: 100, h: 100, bgcolor: "white", opacity: 0.05, borderRadius: "50%" }} />
+          <Typography variant="h5" sx={{ fontWeight: 800, mb: 2 }}>Still Have Questions?</Typography>
+          <Typography sx={{ color: "rgba(255,255,255,0.8)", mb: 4, maxWidth: "500px", mx: "auto" }}>
+            Can't find the answer you're looking for? Please chat to our friendly team.
+          </Typography>
+          <Box
+            component="a"
+            href="/contact"
+            sx={{
+              display: "inline-block",
+              px: 6,
+              py: 2,
+              bgcolor: "#f5b000",
+              color: "white",
+              fontWeight: "bold",
+              borderRadius: "full",
+              textDecoration: "none",
+              transition: "all 0.3s ease",
+              "&:hover": { bgcolor: "#e0a100", transform: "scale(1.05)" },
+            }}
+          >
+            Contact Us
+          </Box>
+        </Box>
+      </Container>
     </Box>
   );
 }
