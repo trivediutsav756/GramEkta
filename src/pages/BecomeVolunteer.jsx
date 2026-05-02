@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import SuccessModal from '../components/common/SuccessModal';
 
 const BecomeVolunteer = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +18,7 @@ const BecomeVolunteer = () => {
   const fileInputRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState(null);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -82,6 +84,7 @@ const BecomeVolunteer = () => {
         type: 'success', 
         text: 'Successfully registered! Thank you for joining us as a volunteer.' 
       });
+      setShowSuccess(true);
       
       // Reset form
       setFormData({
@@ -382,6 +385,13 @@ const BecomeVolunteer = () => {
           </form>
         </div>
       </div>
+      <SuccessModal 
+        isOpen={showSuccess} 
+        onClose={() => setShowSuccess(false)}
+        title="Application Received!"
+        message="Thank you for your interest in volunteering with Gram Ekta Foundation. Our team will review your application and contact you shortly."
+        buttonText="Back to Home"
+      />
     </div>
   );
 };

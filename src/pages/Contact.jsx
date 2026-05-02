@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SuccessModal from '../components/common/SuccessModal';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const Contact = () => {
 
   const [loading, setLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState(null);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -41,6 +43,7 @@ const Contact = () => {
       }
 
       setStatusMessage({ type: 'success', text: 'Thank you for contacting us! Your message has been successfully sent.' });
+      setShowSuccess(true);
       setFormData({ name: '', email: '', mobile: '', subject: '', message: '' });
 
       // Clear success message after 5 seconds
@@ -243,6 +246,13 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      <SuccessModal 
+        isOpen={showSuccess} 
+        onClose={() => setShowSuccess(false)}
+        title="Message Sent!"
+        message="Thank you for reaching out. We have received your message and our team will get back to you as soon as possible."
+        buttonText="Back to Home"
+      />
     </div>
   );
 };

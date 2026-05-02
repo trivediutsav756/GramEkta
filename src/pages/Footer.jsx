@@ -211,17 +211,17 @@
 //     </div>
 //   );
 // }
-import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/image copy 3.png";
- 
+
 export default function Footer() {
   return (
     <footer className="relative bg-[#061812] font-inter">
       <div className="relative z-20 max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
- 
+
         {/* ── Footer Body (4 Columns) ── */}
         <div className="py-16 flex flex-col lg:flex-row gap-12 lg:gap-8 justify-between">
-         
+
           {/* Column 1: Brand */}
           <div className="lg:w-[25%] flex flex-col items-start">
             <div className="mb-6 inline-block">
@@ -238,59 +238,43 @@ export default function Footer() {
               Donate Now
             </button>
           </div>
- 
+
           {/* Column 2: Quick Links */}
-          <div className="lg:w-[15%] pt-2">
+          <div className="lg:w-[20%] pt-2">
             <LinkCol
               title="Quick Links"
               links={[
-                "About Us",
-                "Our News",
-                "Our Campaign",
-                "Privacy policy",
-                "Contact Us",
+                { label: "About Us", path: "/about" },
+                { label: "Contact Us", path: "/contact" },
+                { label: "Privacy Policy", path: "/privacy-policy" },
               ]}
             />
           </div>
- 
-          {/* Column 3: Our Service */}
-          <div className="lg:w-[15%] pt-2">
-            <LinkCol
-              title="Our Service"
-              links={[
-                "Give Donation",
-                "Education Support",
-                "Food Support",
-                "Health Support",
-                "Our Campaign",
-              ]}
-            />
-          </div>
- 
+
           {/* Column 4: Contact Us + Social */}
           <div className="lg:w-[35%] flex flex-col sm:flex-row gap-5 items-stretch pt-2">
             <div className="bg-[#122e23] rounded-3xl p-8 flex-1 w-full border border-white/5">
               <h3 className="text-white text-xl font-bold mb-7">
-                Contact Us
+
               </h3>
- 
+
               <div className="flex items-start gap-4 mb-7">
                 <div className="mt-1">
-                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8aabb0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                   </svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8aabb0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
                 </div>
                 <div>
                   <p className="text-[#8aabb0] text-[13px] mb-1 font-medium">Call us any time:</p>
                   <p className="text-white font-bold text-base tracking-wide">+91 9172605333</p>
                 </div>
               </div>
- 
+
               <div className="flex items-start gap-4 mb-7">
                 <div className="mt-1">
-                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8aabb0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
-                   </svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8aabb0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
                 </div>
                 <div>
                   <p className="text-[#8aabb0] text-[13px] mb-1 font-medium">
@@ -302,9 +286,9 @@ export default function Footer() {
 
               <div className="flex items-start gap-4 mb-6">
                 <div className="mt-1">
-                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8aabb0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>
-                   </svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8aabb0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>
+                  </svg>
                 </div>
                 <div>
                   <p className="text-[#8aabb0] text-[13px] mb-1 font-medium">Registered Address:</p>
@@ -316,9 +300,9 @@ export default function Footer() {
 
               <div className="flex items-start gap-4">
                 <div className="mt-1">
-                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8aabb0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>
-                   </svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8aabb0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>
+                  </svg>
                 </div>
                 <div>
                   <p className="text-[#8aabb0] text-[13px] mb-1 font-medium">Communication Address:</p>
@@ -328,19 +312,19 @@ export default function Footer() {
                 </div>
               </div>
             </div>
- 
+
             {/* Social icons */}
             <div className="flex flex-row sm:flex-col gap-3 justify-center">
               {[
-                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />,
-                 <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />,
-                 <>
-                   <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58a2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z" />
-                 </>,
-                 <>
-                   <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
-                   <circle cx="4" cy="4" r="2" />
-                 </>,
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />,
+                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />,
+                <>
+                  <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58a2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z" />
+                </>,
+                <>
+                  <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+                  <circle cx="4" cy="4" r="2" />
+                </>,
               ].map((icon, i) => (
                 <button
                   key={i}
@@ -361,10 +345,10 @@ export default function Footer() {
               ))}
             </div>
           </div>
- 
+
         </div>
       </div>
- 
+
       {/* ── Bottom Bar ── */}
       <div className="bg-[#176b5c] py-5 px-6 text-center relative z-20">
         <p className="text-white text-sm font-medium">
@@ -376,7 +360,7 @@ export default function Footer() {
     </footer>
   );
 }
- 
+
 /* Reusable link column */
 function LinkCol({ title, links }) {
   return (
@@ -384,17 +368,17 @@ function LinkCol({ title, links }) {
       <h3 className="text-white text-xl font-bold mb-7">{title}</h3>
       <ul className="flex flex-col gap-[18px]">
         {links.map((link) => (
-          <li key={link} className="flex items-center gap-3 group">
+          <li key={link.label} className="flex items-center gap-3 group">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#eda726" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="transform transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 flex-shrink-0">
-               <line x1="7" y1="17" x2="17" y2="7"></line>
-               <polyline points="7 7 17 7 17 17"></polyline>
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
             </svg>
-            <a
-              href="#"
+            <Link
+              to={link.path}
               className="text-[#8aabb0] text-[15px] hover:text-white transition-colors"
             >
-              {link}
-            </a>
+              {link.label}
+            </Link>
           </li>
         ))}
       </ul>

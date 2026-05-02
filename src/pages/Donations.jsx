@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import SuccessModal from '../components/common/SuccessModal';
 
 const PRESET_AMOUNTS = [500, 1000, 2500, 5000, 10000];
 
@@ -17,6 +18,7 @@ const Donations = () => {
   const fileInputRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState(null);
+  const [showSuccess, setShowSuccess] = useState(false);
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -96,6 +98,7 @@ const Donations = () => {
       if (!response.ok) throw new Error('Failed');
 
       setStatusMessage({ type: 'success', text: 'Thank you for your generous donation! Your contribution will make a real difference.' });
+      setShowSuccess(true);
       setFormData({ name: '', email: '', mobile: '', donation_amount: '', category_id: '' });
       removeImage();
       setTimeout(() => setStatusMessage(null), 7000);
@@ -459,6 +462,13 @@ const Donations = () => {
           </div>
         </div>
       </div>
+      <SuccessModal 
+        isOpen={showSuccess} 
+        onClose={() => setShowSuccess(false)}
+        title="Thank You for Your Donation!"
+        message="Your contribution has been received. Your support helps us continue our mission to bring positive change to communities."
+        buttonText="Back to Home"
+      />
     </div>
   );
 };
